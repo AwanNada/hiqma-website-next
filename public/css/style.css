@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+/* --- CUSTOM UTILITY CLASSES FOR ELEGANT CLASSIC ISLAMIC THEME --- */
+
+:root {
+  --color-primary: #0F2D59;       /* Biru Solid Navy HIQMA */
+  --color-primary-light: #163e75; /* Navy lebih terang */
+  --color-gold: #D4AF37;          /* Emas Elegan */
+  --color-gold-hover: #B89324;    /* Emas Gelap */
+  --color-cream: #F9F8F6;         /* Cream hangat latar belakang */
+  --color-white: #FFFFFF;         /* Putih Murni */
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-cream);
+  color: #1F2937;
+}
+
+/* Seamless Islamic Geometric Pattern (8-Point Star / Rub el Hizb Lattice) */
+.bg-islamic-pattern {
+  background-color: var(--color-cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%230f2d59' fill-opacity='0.025'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M40 0l10 30 30 10-30 10-10 30-10-30-30-10 30-10zM0 40l10-10 10 10-10 10zM80 40l-10-10-10 10 10 10zM40 80l-10-10 10-10 10 10zM40 0l-10 10 10 10 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-islamic-dark {
+  background-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23d4af37' fill-opacity='0.035'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M40 0l10 30 30 10-30 10-10 30-10-30-30-10 30-10zM0 40l10-10 10 10-10 10zM80 40l-10-10-10 10 10 10zM40 80l-10-10 10-10 10 10zM40 0l-10 10 10 10 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Diagonal Separator Lines and Layered Shapes (Visual-First Image Style) */
+.skew-bg-left {
+  position: relative;
+}
+.skew-bg-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  transform: skewY(-3deg);
+  transform-origin: top left;
+  z-index: -1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.skew-bg-right {
+  position: relative;
+}
+.skew-bg-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  transform: skewY(3deg);
+  transform-origin: top right;
+  z-index: -1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+/* Premium Card Overlays and Drop Shadows */
+.paper-card {
+  background: var(--color-white);
+  border: 1px solid rgba(15, 45, 89, 0.05);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.03), 0 5px 15px -5px rgba(0, 0, 0, 0.01);
+  border-radius: 1.5rem; /* Soft rounded corners */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paper-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 45px -10px rgba(15, 45, 89, 0.08), 0 10px 20px -5px rgba(15, 45, 89, 0.03);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Custom Text Underlines & Gold Borders */
+.gold-border-bottom {
+  position: relative;
+}
+.gold-border-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--color-gold);
+  border-radius: 9999px;
+}
+
+.gold-border-center {
+  position: relative;
+}
+.gold-border-center::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+  border-radius: 9999px;
+}
+
+/* Custom transitions and interactive elements */
+.btn-gold {
+  background-color: var(--color-gold);
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+.btn-gold:hover {
+  background-color: var(--color-gold-hover);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px -4px rgba(212, 175, 55, 0.4);
+}
+
+.btn-outline-blue {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.btn-outline-blue:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

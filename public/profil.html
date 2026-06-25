@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Organisasi | UKM HIQMA UIN Syarif Hidayatullah Jakarta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hiqma: {
+              navy: '#0F2D59',
+              navyLight: '#163e75',
+              gold: '#D4AF37',
+              goldHover: '#B89324',
+              cream: '#F9F8F6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-islamic-pattern min-h-screen flex flex-col font-sans">
+
+  <!-- NAVBAR / HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-hiqma-navy/5 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="/" class="flex items-center gap-3">
+          <div class="flex items-center">
+            <!-- UIN Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-UinJkt.png" alt="Logo UIN Jakarta">
+          </div>
+          <div class="flex items-center border-l border-gray-300 pl-3">
+            <!-- HIQMA Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          </div>
+          <!-- Kabinet Logo -->
+          <div class="flex items-center border-l border-gray-300 pl-3 hidden sm:flex">
+            <img class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm" src="/Images/Logo-kabinet-ashfiya.png" alt="Logo Kabinet Ashfiya">
+
+            <div class="ml-2 flex flex-col justify-center">
+              <span class="text-xs font-bold text-hiqma-navy leading-none">KABINET</span>
+              <span class="text-xs font-extrabold text-hiqma-gold tracking-widest leading-none">ASHFIYA</span>
+            </div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Beranda</a>
+          <a href="/profil" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Profil</a>
+          <a href="/publikasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Publikasi & Galeri</a>
+          <a href="/booking" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Booking Talent</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="/booking" class="btn-gold px-5 py-2.5 rounded-xl text-sm shadow-sm hidden lg:block">
+            Pesan Layanan
+          </a>
+          <a href="/login" class="btn-outline-blue px-5 py-2.5 rounded-xl text-sm">
+            Login Anggota
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
+      <a href="/" class="block text-gray-700 font-medium py-2">Beranda</a>
+      <a href="/profil" class="block text-hiqma-navy font-bold py-2">Profil</a>
+      <a href="/publikasi" class="block text-gray-700 font-medium py-2">Publikasi & Galeri</a>
+      <a href="/booking" class="block text-gray-700 font-medium py-2">Booking Talent</a>
+      <a href="/booking" class="block text-center btn-gold py-2.5 rounded-xl text-sm mt-4">Pesan Layanan</a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO BANNER
+       ========================================== -->
+  <section class="bg-islamic-dark text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-hiqma-navy to-hiqma-navyLight z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Mengenal UKM HIQMA</h1>
+      <p class="text-hiqma-gold font-serif italic text-base sm:text-lg">
+        Sejarah perjuangan, visi ketakwaan, kepengurusan, dan atribut kebanggaan organisasi
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAB NAVIGATION
+       ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-wrap justify-center border-b border-gray-200 gap-2 sm:gap-6">
+      <button onclick="switchTab('sejarah-visi')" id="tab-btn-sejarah-visi" class="tab-btn py-4 px-4 font-bold text-sm sm:text-base border-b-2 border-hiqma-navy text-hiqma-navy focus:outline-none transition-all">
+        Sejarah & Visi Misi
+      </button>
+      <button onclick="switchTab('kepengurusan')" id="tab-btn-kepengurusan" class="tab-btn py-4 px-4 font-semibold text-sm sm:text-base border-b-2 border-transparent text-gray-500 hover:text-hiqma-navy focus:outline-none transition-all">
+        Struktur Kepengurusan (Ashfiya)
+      </button>
+      <button onclick="switchTab('atribut')" id="tab-btn-atribut" class="tab-btn py-4 px-4 font-semibold text-sm sm:text-base border-b-2 border-transparent text-gray-500 hover:text-hiqma-navy focus:outline-none transition-all">
+        Atribut & Lambang
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAB CONTENT 1: SEJARAH & VISI MISI
+       ========================================== -->
+  <main id="tab-content-sejarah-visi" class="tab-pane max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Sejarah Detail -->
+      <div class="lg:col-span-8 space-y-6">
+        <h2 class="text-2xl font-extrabold text-hiqma-navy gold-border-bottom">Latar Belakang Pendirian</h2>
+        <div class="text-gray-600 text-sm leading-relaxed space-y-4">
+          <p>
+            <strong>Himpunan Qari dan Qariah Mahasiswa (HIQMA)</strong> UIN Syarif Hidayatullah Jakarta didirikan pada <strong>11 Oktober 1988</strong>. Gagasan ini lahir dari inisiatif para pendiri, antara lain <strong>Ustaz Dimyati</strong>, <strong>Ustaz al-Hamidi (alm.)</strong>, dan <strong>Ustaz Mahsun Salim</strong> di Musala An-Nur Pandeglang, Banten.
+          </p>
+          <p>
+            Pendirian HIQMA didasari atas keprihatinan para pendiri mengenai sulitnya mencari Qari' dan Qari'ah berbakat untuk mengisi berbagai prosesi keagamaan di lingkungan kampus UIN Jakarta pada waktu itu. Melalui obrolan hangat, mereka bersepakat membentuk wadah khusus untuk mengasah potensi mahasiswa di bidang seni pembacaan Al-Qur'an.
+          </p>
+          <p>
+            Meski pada awal masa pendirian menghadapi berbagai kendala, perjuangan tersebut akhirnya mendapat restu dari Pembantu Rektor Bidang Kemahasiswaan saat itu, Dr. H. Aqib Suminto, yang terkenal sangat mengapresiasi syiar seni Al-Qur'an. HIQMA pun akhirnya resmi disahkan sebagai Unit Kegiatan Mahasiswa (UKM) resmi di tingkat universitas.
+          </p>
+          <p>
+            Kini, HIQMA tidak hanya berfokus pada seni suara (Tilawah, Shalawat, Hadrah, Marawis, Qasidah, Syarhil), melainkan juga mengembangkan divisi Tahfiz (hafalan Al-Qur'an), Kaligrafi arab, serta kemampuan public speaking (MC).
+          </p>
+        </div>
+      </div>
+
+      <!-- Pendiri & Profil Ringkas -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="paper-card p-6 border-t-4 border-hiqma-gold">
+          <h4 class="font-bold text-hiqma-navy text-base mb-4">Tokoh Perintis & Pendiri</h4>
+          <ul class="space-y-3 text-xs text-gray-600">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiqma-gold"></span> Ustaz Dimyati
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiqma-gold"></span> Ustaz al-Hamidi (Almarhum)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiqma-gold"></span> Ustaz Mahsun Salim
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiqma-gold"></span> Ustazah Hj. Tatu Uyainah
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiqma-gold"></span> Ustaz Hanif Fahfri (Almarhum)
+            </li>
+          </ul>
+        </div>
+
+        <div class="paper-card p-6 bg-hiqma-navy text-white text-center space-y-3">
+          <span class="text-xs text-hiqma-gold tracking-widest font-bold uppercase">MOTO KAMI</span>
+          <h3 class="text-xl font-serif italic font-normal text-white">"Damai bersama Al-Qur'an"</h3>
+          <p class="text-white/60 text-[10px] leading-relaxed">
+            Menanamkan nilai-nilai kedamaian Al-Qur'an di dalam kehidupan berorganisasi serta pengabdian masyarakat.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Visi & Misi Detailed -->
+    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-hiqma-navy border-b border-gray-100 pb-2">Visi Organisasi</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Menjadi lembaga mahasiswa yang membentuk insan akademis yang beriman dan bertakwa kepada Allah Swt., memiliki wawasan dan kecintaan terhadap Al-Qur’an dan seni islami, serta mampu mengembangkan potensi dan keterampilan seni islami tersebut sebagai media dakwah di tengah-tengah masyarakat.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-hiqma-navy border-b border-gray-100 pb-2">Misi Organisasi</h3>
+        <ol class="text-gray-600 text-sm leading-relaxed list-decimal list-inside space-y-3">
+          <li>Membina dan mengembangkan potensi dan kreativitas seni islami mahasiswa.</li>
+          <li>Membina para mahasiswa dalam mendalami dan mengaplikasikan Al-Qur’an dalam kehidupannya sehari-hari.</li>
+          <li>Memasyarakatkan seni islami di tengah-tengah masyarakat kampus khususnya dan masyarakat muslim umumnya demi menegakkan syiar Islam.</li>
+        </ol>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       TAB CONTENT 2: STRUKTUR KEPENGURUSAN
+       ========================================== -->
+  <main id="tab-content-kepengurusan" class="tab-pane max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12 hidden">
+    
+    <div class="text-center space-y-2 mb-12">
+      <span class="text-xs font-bold text-hiqma-gold uppercase tracking-widest">Struktur Organisasi Resmi</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-hiqma-navy">Kabinet Ashfiya 2026</h2>
+      <p class="text-gray-500 text-sm">Disahkan berdasarkan Surat Keputusan Upgrading & Formatur Organisasi HIQMA</p>
+    </div>
+
+    <!-- Hierarchy Visual Tree (Bagan Sederhana yang Sangat Premium) -->
+    <div class="space-y-8 flex flex-col items-center">
+      
+      <!-- Pelindung & Penasihat -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full text-center">
+        <div class="p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+          <h5 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Pelindung</h5>
+          <p class="text-sm font-bold text-hiqma-navy mt-1">Prof. Asep Saepudin Jahar, M.A., Ph.D.</p>
+          <span class="text-[10px] text-gray-500 font-medium">Rektor UIN Syarif Hidayatullah Jakarta</span>
+        </div>
+        <div class="p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+          <h5 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Dewan Pertimbangan Organisasi (DPO)</h5>
+          <p class="text-sm font-bold text-hiqma-navy mt-1">Wildan Miftahudin</p>
+          <span class="text-[10px] text-gray-500 font-medium">Koordinator DPO</span>
+        </div>
+      </div>
+
+      <!-- Connector line -->
+      <div class="w-0.5 h-8 bg-gray-200"></div>
+
+      <!-- Pimpinan HIQMA (Ketua & Wakil) -->
+      <div class="paper-card p-6 text-center max-w-md w-full border-t-4 border-hiqma-gold shadow-md">
+        <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Pimpinan Harian</span>
+        <div class="mt-3 space-y-4">
+          <div>
+            <h4 class="text-lg font-extrabold text-hiqma-navy">Muhammad Haikal Hibrizi</h4>
+            <p class="text-xs text-gray-500">Ketua Umum</p>
+          </div>
+          <div class="border-t border-gray-100 pt-3">
+            <h4 class="text-base font-bold text-hiqma-navy">Abdul Hafizh</h4>
+            <p class="text-xs text-gray-500">Wakil Ketua Umum</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector line -->
+      <div class="w-0.5 h-8 bg-gray-200"></div>
+
+      <!-- Sekretaris & Bendahara -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl w-full">
+        <!-- Box Sekretaris -->
+        <div class="paper-card p-5 text-center">
+          <span class="text-xs font-semibold text-hiqma-navy tracking-wider uppercase">Sekretaris Jenderal</span>
+          <div class="mt-3 space-y-2 text-sm text-gray-700">
+            <div>
+              <p class="font-bold">Shifa Isyalini Sukino</p>
+              <span class="text-[10px] text-gray-400">Sekretaris I</span>
+            </div>
+            <div class="border-t border-gray-50 pt-2">
+              <p class="font-bold">Anggita Maulida</p>
+              <span class="text-[10px] text-gray-400">Sekretaris II</span>
+            </div>
+          </div>
+        </div>
+        <!-- Box Bendahara -->
+        <div class="paper-card p-5 text-center">
+          <span class="text-xs font-semibold text-hiqma-navy tracking-wider uppercase">Bendahara Keuangan</span>
+          <div class="mt-3 space-y-2 text-sm text-gray-700">
+            <div>
+              <p class="font-bold">Azizah Amanah Aulia Andini</p>
+              <span class="text-[10px] text-gray-400">Bendahara I</span>
+            </div>
+            <div class="border-t border-gray-50 pt-2">
+              <p class="font-bold">Naila Taqiyya Aidina</p>
+              <span class="text-[10px] text-gray-400">Bendahara II</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector line -->
+      <div class="w-0.5 h-8 bg-gray-200"></div>
+
+      <!-- Grid Departemen -->
+      <div class="text-center mt-4 w-full">
+        <h4 class="text-xs font-bold text-hiqma-gold tracking-widest uppercase mb-8">Kepala Departemen Kabinet</h4>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+          <!-- Dep 1 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Pendidikan & Kaderisasi</h5>
+            <p class="text-sm font-bold text-hiqma-navy">Muhammad Ricky Pratama</p>
+            <span class="text-[10px] text-gray-400 block">Mengatur bimbingan internal & regenerasi anggota.</span>
+          </div>
+
+          <!-- Dep 2 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Project Officer</h5>
+            <p class="text-sm font-bold text-hiqma-navy">M. Fauzi Amru</p>
+            <span class="text-[10px] text-gray-400 block">Koordinator lapangan panggung & EO HIQMA.</span>
+          </div>
+
+          <!-- Dep 3 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Media Officer</h5>
+            <p class="text-sm font-bold text-hiqma-navy">Muhammad Dzikra Rantona</p>
+            <span class="text-[10px] text-gray-400 block">Pengelola dokumentasi, publikasi, & IT website.</span>
+          </div>
+
+          <!-- Dep 4 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Public Relation</h5>
+            <p class="text-sm font-bold text-hiqma-navy">Galuh Ajeng Fildzah Amalia</p>
+            <span class="text-[10px] text-gray-400 block">Penghubung jaringan alumni & pemohon booking.</span>
+          </div>
+
+          <!-- Dep 5 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Rumah Tangga</h5>
+            <p class="text-sm font-bold text-hiqma-navy">Ahmad Alwi</p>
+            <span class="text-[10px] text-gray-400 block">Pengurus aset sekretariat & inventaris alat.</span>
+          </div>
+
+          <!-- Dep 6 -->
+          <div class="paper-card p-5 text-left space-y-2">
+            <h5 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider">Dep. Minat & Bakat (PMB)</h5>
+            <p class="text-sm font-bold text-hiqma-navy">Laila Fauziatus Sholihah</p>
+            <span class="text-[10px] text-gray-400 block">Menaungi 8 Divisi Pembinaan Seni Islami.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       TAB CONTENT 3: ATRIBUT
+       ========================================== -->
+  <main id="tab-content-atribut" class="tab-pane max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12 hidden">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Bendera & Logo -->
+      <div class="lg:col-span-6 space-y-6">
+        <h3 class="text-xl font-bold text-hiqma-navy gold-border-bottom">Makna Atribut Logo & Bendera</h3>
+        
+        <div class="space-y-4 text-xs text-gray-600">
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 bg-hiqma-navy/5 rounded-xl flex items-center justify-center font-bold text-hiqma-navy">1</div>
+            <p class="leading-relaxed">
+              <strong>Bentuk Lingkaran:</strong> Melambangkan kebulatan tekad dari seluruh anggota untuk memperjuangkan syiar Islam.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 bg-hiqma-navy/5 rounded-xl flex items-center justify-center font-bold text-hiqma-navy">2</div>
+            <p class="leading-relaxed">
+              <strong>Khat Khufi:</strong> Gambar tulisan "HIQMA" berbentuk kaligrafi Al-Qur'an jenis khufi tegak melambangkan tujuan yang satu, hubungan vertikal vertikal langsung dengan Sang Pencipta (Hablum minallah).
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 bg-hiqma-navy/5 rounded-xl flex items-center justify-center font-bold text-hiqma-navy">3</div>
+            <p class="leading-relaxed">
+              <strong>Warna Biru Solid & Putih:</strong> Biru solid melambangkan kedalaman wawasan serta ketenangan berpikir. Putih melambangkan kesucian niat dalam berdakwah.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 bg-hiqma-navy/5 rounded-xl flex items-center justify-center font-bold text-hiqma-navy">4</div>
+            <p class="leading-relaxed">
+              <strong>Dua Bintang:</strong> Terletak di sisi kanan dan kiri, melambangkan Ketauhidan (mengesakan Allah) serta usaha mencapai cita-cita setinggi langit.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seragam PDH & PDK -->
+      <div class="lg:col-span-6 space-y-6">
+        <h3 class="text-xl font-bold text-hiqma-navy gold-border-bottom">Seragam Kebanggaan</h3>
+        
+        <div class="paper-card p-6 space-y-4">
+          <div>
+            <h4 class="font-bold text-hiqma-navy text-sm">Pakaian Dinas Harian (PDH)</h4>
+            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+              Kemeja hitam dengan tulisan "HIQMA" ber-font Footlight MT Light di dada kiri, name tag di dada kanan, pin pengurus di atas name tag, dan bendera/logo di lengan kanan. Dipakai saat bertugas harian di kampus maupun kepanitiaan.
+            </p>
+          </div>
+          <div class="border-t border-gray-100 pt-4">
+            <h4 class="font-bold text-hiqma-navy text-sm">Pakaian Dinas Khusus (PDK)</h4>
+            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+              Jas almamater resmi kampus UIN Syarif Hidayatullah Jakarta (berwarna biru terang) dengan tambahan kelengkapan atribut pin kepengurusan dan logo HIQMA di lengan kanan, yang dikenakan pada acara seremonial resmi universitas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="bg-islamic-dark text-white pt-16 pb-8 border-t border-hiqma-gold/25 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+      
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <svg class="h-10 w-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="4" />
+            <circle cx="50" cy="50" r="39" stroke="#D4AF37" stroke-width="1" stroke-dasharray="2 2" />
+            <path d="M35 30v40M47 30v40M58 30v40M68 30v40M35 50h33" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="41" cy="62" r="3" fill="#FFFFFF" />
+            <circle cx="63" cy="62" r="3" fill="#FFFFFF" />
+          </svg>
+          <div>
+            <h4 class="font-bold text-lg tracking-wide text-white leading-none">UKM HIQMA</h4>
+            <span class="text-[10px] text-hiqma-gold font-bold tracking-widest">UIN SYARIF HIDAYATULLAH JAKARTA</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-xs leading-relaxed max-w-sm">
+          Unit Kegiatan Mahasiswa pembinaan minat bakat seni Al-Qur'an dan organisasi di bawah naungan Wakil Rektor Kemahasiswaan UIN Jakarta.
+        </p>
+        <div class="text-xs text-hiqma-gold font-semibold italic">
+          "Damai bersama Al-Qur'an"
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Tautan Pintas</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Sejarah & Visi Misi</a></li>
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Struktur Kepengurusan</a></li>
+          <li><a href="/publikasi" class="hover:text-hiqma-gold transition-colors">Berita & Publikasi</a></li>
+          <li><a href="/booking" class="hover:text-hiqma-gold transition-colors">Layanan Talent Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Sekretariat</h4>
+        <p class="text-white/70 text-xs leading-relaxed">
+          Gedung Student Center Lt. 3, UIN Syarif Hidayatullah Jakarta<br>
+          Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
+        </p>
+        <div class="space-y-1 text-xs text-white/70">
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
+          <div><span class="text-hiqma-gold font-semibold">Website:</span> hiqmauinjkt.com</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
+      <span>&copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. Hak Cipta Dilindungi.</span>
+      <span>Kabinet Ashfiya 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile navigation menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Switch profile tabs
+    function switchTab(tabId) {
+      // Hide all pane elements
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      // Remove border styling from all tab buttons
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('border-hiqma-navy', 'text-hiqma-navy');
+        el.classList.add('border-transparent', 'text-gray-500');
+      });
+
+      // Show active tab pane
+      document.getElementById('tab-content-' + tabId).classList.remove('hidden');
+      // Style active button
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      activeBtn.classList.remove('border-transparent', 'text-gray-500');
+      activeBtn.classList.add('border-hiqma-navy', 'text-hiqma-navy');
+    }
+  </script>
+</body>
+</html>

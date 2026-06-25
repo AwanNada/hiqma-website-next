@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemesanan Talent (Booking) | UKM HIQMA UIN Syarif Hidayatullah Jakarta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hiqma: {
+              navy: '#0F2D59',
+              navyLight: '#163e75',
+              gold: '#D4AF37',
+              goldHover: '#B89324',
+              cream: '#F9F8F6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-islamic-pattern min-h-screen flex flex-col font-sans">
+
+  <!-- NAVBAR / HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-hiqma-navy/5 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="/" class="flex items-center gap-3">
+          <div class="flex items-center">
+            <!-- UIN Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-UinJkt.png" alt="Logo UIN Jakarta">
+          </div>
+          <div class="flex items-center border-l border-gray-300 pl-3">
+            <!-- HIQMA Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          </div>
+          <!-- Kabinet Logo -->
+          <div class="flex items-center border-l border-gray-300 pl-3 hidden sm:flex">
+            <img class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm" src="/Images/Logo-kabinet-ashfiya.png" alt="Logo Kabinet Ashfiya">
+            <div class="ml-2 flex flex-col justify-center">
+              <span class="text-xs font-bold text-hiqma-navy leading-none">KABINET</span>
+              <span class="text-xs font-extrabold text-hiqma-gold tracking-widest leading-none">ASHFIYA</span>
+            </div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Beranda</a>
+          <a href="/profil" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Profil</a>
+          <a href="/publikasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Publikasi & Galeri</a>
+          <a href="/booking" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Booking Talent</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="/booking" class="btn-gold px-5 py-2.5 rounded-xl text-sm shadow-sm hidden lg:block animate-pulse">
+            Pesan Layanan
+          </a>
+          <a href="/login" class="btn-outline-blue px-5 py-2.5 rounded-xl text-sm">
+            Login Anggota
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
+      <a href="/" class="block text-gray-700 font-medium py-2">Beranda</a>
+      <a href="/profil" class="block text-gray-700 font-medium py-2">Profil</a>
+      <a href="/publikasi" class="block text-gray-700 font-medium py-2">Publikasi & Galeri</a>
+      <a href="/booking" class="block text-hiqma-navy font-bold py-2">Booking Talent</a>
+      <a href="/booking" class="block text-center btn-gold py-2.5 rounded-xl text-sm mt-4">Pesan Layanan</a>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="bg-islamic-dark text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-hiqma-navy to-hiqma-navyLight z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Booking / Pemesanan Talent</h1>
+      <p class="text-hiqma-gold font-serif italic text-base sm:text-lg">
+        Lengkapi pengajuan untuk menampilkan delegasi terbaik seni Al-Qur'an dan MC HIQMA di acara Anda
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+    
+    <!-- LEFT COLUMN: BOOKING GUIDE & INFO -->
+    <div class="lg:col-span-4 space-y-8">
+      
+      <!-- Steps Guide -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-hiqma-navy gold-border-bottom">Alur Pemesanan</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Berikut adalah alur pendaftaran pengajuan booking hingga pelaksanaan acara:</p>
+        
+        <div class="space-y-4 pt-2">
+          <!-- Step 1 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-hiqma-navy text-white flex items-center justify-center font-bold text-xs">1</div>
+            <div>
+              <h5 class="text-xs font-bold text-hiqma-navy">Isi Formulir Lengkap</h5>
+              <p class="text-[10px] text-gray-500 mt-0.5 leading-relaxed">Masukkan info penyelenggara, jenis acara, waktu/lokasi, dan layanan talent yang dibutuhkan.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-hiqma-gold text-hiqma-navy flex items-center justify-center font-bold text-xs">2</div>
+            <div>
+              <h5 class="text-xs font-bold text-hiqma-navy">Verifikasi & Konfirmasi</h5>
+              <p class="text-[10px] text-gray-500 mt-0.5 leading-relaxed">Admin divisi PR akan menghubungi Anda via WhatsApp/Email untuk verifikasi ketersediaan dan administrasi.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-xs">3</div>
+            <div>
+              <h5 class="text-xs font-bold text-hiqma-navy">Pengiriman Delegasi</h5>
+              <p class="text-[10px] text-gray-500 mt-0.5 leading-relaxed">Delegasi talent terpilih HIQMA akan tampil menyukseskan jalannya acara Anda secara profesional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- General Policy -->
+      <div class="paper-card p-6 border-l-4 border-hiqma-gold bg-white space-y-3">
+        <h4 class="font-bold text-hiqma-navy text-xs uppercase tracking-wider">Kebijakan Layanan</h4>
+        <ul class="text-[10px] text-gray-500 space-y-2 list-disc list-inside leading-relaxed">
+          <li>Pengajuan booking sebaiknya diajukan minimal <strong>7 hari sebelum</strong> acara berlangsung.</li>
+          <li>Kami tidak memungut biaya payment online di website (sistem pembayaran akan disepakati dengan narahubung PR).</li>
+          <li>Apabila ada perubahan tanggal atau pembatalan, segera hubungi kontak sekretariat resmi.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: THE INTERACTIVE FORM -->
+    <div class="lg:col-span-8">
+      <form id="booking-form" class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-8" onsubmit="handleFormSubmit(event)">
+        
+        <!-- Form Header -->
+        <div>
+          <h3 class="text-xl font-bold text-hiqma-navy">Formulir Pengajuan Pemesanan</h3>
+          <p class="text-gray-400 text-xs mt-1">Silakan lengkapi seluruh kolom isian berikut dengan data yang valid.</p>
+        </div>
+
+        <!-- Section 1: Identitas Pemohon -->
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider border-b border-gray-50 pb-1">1. Informasi Pemohon</h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nama_pemohon" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Nama Lengkap Pemohon *</label>
+              <input type="text" id="nama_pemohon" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+            </div>
+            <div>
+              <label for="instansi" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Instansi / Organisasi / Pribadi</label>
+              <input type="text" id="instansi" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50" placeholder="Contoh: Panitia Pernikahan Budi">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="kontak" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Kontak WhatsApp / No. Handphone *</label>
+              <input type="tel" id="kontak" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+            </div>
+            <div>
+              <label for="email" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Alamat Email *</label>
+              <input type="email" id="email" required placeholder="nama@domain.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Info Acara -->
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider border-b border-gray-50 pb-1">2. Detail Acara & Pelaksanaan</h4>
+          
+          <div>
+            <label for="nama_acara" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Nama Acara *</label>
+            <input type="text" id="nama_acara" required placeholder="Contoh: Walimatul Ursy / Pengajian Bulanan" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="tanggal_acara" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Tanggal Acara *</label>
+              <input type="date" id="tanggal_acara" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+            </div>
+            <div>
+              <label for="lokasi" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Lokasi / Alamat Lengkap Acara *</label>
+              <input type="text" id="lokasi" required placeholder="Gedung/Masjid & Jalan" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Pilih Layanan Talent -->
+        <div class="space-y-4">
+          <div class="flex flex-col">
+            <h4 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider border-b border-gray-50 pb-1">3. Pilih Layanan Keahlian (Bisa Pilih Lebih Dari Satu) *</h4>
+            <span class="text-[9px] text-gray-400 mt-1">Klik pada kotak layanan untuk menandai pilihan Anda.</span>
+          </div>
+
+          <!-- Services Choice Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="talent-selection-grid">
+            
+            <!-- Item Tilawah -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Tilawah" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Tilawah</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Pembacaan ayat suci Al-Qur'an.</span>
+              </div>
+            </label>
+
+            <!-- Item Shalawat -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Shalawat" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Shalawat</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Paduan suara vokal shalawat nabi.</span>
+              </div>
+            </label>
+
+            <!-- Item Syarhil -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Syarhil" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Syarhil Qur'an</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Kolaborasi syarah, pidato & tilawah.</span>
+              </div>
+            </label>
+
+            <!-- Item Hadrah -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Hadrah" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Hadrah</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Rebana klasik lantunan maulid.</span>
+              </div>
+            </label>
+
+            <!-- Item Marawis -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Marawis" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Marawis</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Tabuhan perkusi dinamis cepat.</span>
+              </div>
+            </label>
+
+            <!-- Item Qasidah -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Qasidah" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Qasidah</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Vokal & instrumen rebana nasehat dakwah.</span>
+              </div>
+            </label>
+
+            <!-- Item Tahfiz -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Tahfiz" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Tahfiz / Tasmi'</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Hafalan Qur'an syukuran/khataman.</span>
+              </div>
+            </label>
+
+            <!-- Item Kaligrafi -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Kaligrafi" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Kaligrafi</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Dekorasi live writing atau pesanan lukis.</span>
+              </div>
+            </label>
+
+            <!-- Item MC -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="MC" class="sr-only" onchange="toggleSelectStyle(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">MC Islami</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Pemandu acara formal / non-formal.</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Section 4: Catatan -->
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold text-hiqma-gold uppercase tracking-wider border-b border-gray-50 pb-1">4. Catatan Tambahan</h4>
+          <div>
+            <label for="catatan" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Permintaan Khusus / Detail Acara</label>
+            <textarea id="catatan" rows="4" placeholder="Tuliskan jika ada kebutuhan jam tampil khusus atau koordinasi teknis lainnya..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-end items-center gap-4">
+          <span class="text-[10px] text-gray-400 font-medium">Dengan menekan submit, Anda menyetujui kebijakan layanan HIQMA.</span>
+          <button type="submit" class="btn-gold px-8 py-3.5 rounded-2xl text-xs w-full sm:w-auto shadow-md">
+            Kirim Pengajuan Booking
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-islamic-dark text-white pt-16 pb-8 border-t border-hiqma-gold/25 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+      
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <svg class="h-10 w-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="4" />
+            <circle cx="50" cy="50" r="39" stroke="#D4AF37" stroke-width="1" stroke-dasharray="2 2" />
+            <path d="M35 30v40M47 30v40M58 30v40M68 30v40M35 50h33" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="41" cy="62" r="3" fill="#FFFFFF" />
+            <circle cx="63" cy="62" r="3" fill="#FFFFFF" />
+          </svg>
+          <div>
+            <h4 class="font-bold text-lg tracking-wide text-white leading-none">UKM HIQMA</h4>
+            <span class="text-[10px] text-hiqma-gold font-bold tracking-widest">UIN SYARIF HIDAYATULLAH JAKARTA</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-xs leading-relaxed max-w-sm">
+          Unit Kegiatan Mahasiswa pembinaan minat bakat seni Al-Qur'an dan organisasi di bawah naungan Wakil Rektor Kemahasiswaan UIN Jakarta.
+        </p>
+        <div class="text-xs text-hiqma-gold font-semibold italic">
+          "Damai bersama Al-Qur'an"
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Tautan Pintas</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Sejarah & Visi Misi</a></li>
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Struktur Kepengurusan</a></li>
+          <li><a href="/publikasi" class="hover:text-hiqma-gold transition-colors">Berita & Publikasi</a></li>
+          <li><a href="/booking" class="hover:text-hiqma-gold transition-colors">Layanan Talent Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Sekretariat</h4>
+        <p class="text-white/70 text-xs leading-relaxed">
+          Gedung Student Center Lt. 3, UIN Syarif Hidayatullah Jakarta<br>
+          Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
+        </p>
+        <div class="space-y-1 text-xs text-white/70">
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
+          <div><span class="text-hiqma-gold font-semibold">Website:</span> hiqmauinjkt.com</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
+      <span>&copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. Hak Cipta Dilindungi.</span>
+      <span>Kabinet Ashfiya 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile navigation menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Style toggle helper for checkbox-based card selections
+    function toggleSelectStyle(checkbox) {
+      const parentLabel = checkbox.closest('label');
+      if (checkbox.checked) {
+        parentLabel.classList.remove('border-gray-200');
+        parentLabel.classList.add('border-hiqma-gold', 'bg-hiqma-navy/5', 'shadow-inner');
+      } else {
+        parentLabel.classList.remove('border-hiqma-gold', 'bg-hiqma-navy/5', 'shadow-inner');
+        parentLabel.classList.add('border-gray-200');
+      }
+    }
+
+    // Submit handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      // Collect selected talents
+      const selectedTalents = [];
+      document.querySelectorAll('input[name="layanan"]:checked').forEach(cb => {
+        selectedTalents.push(cb.value);
+      });
+
+      if (selectedTalents.length === 0) {
+        alert("Harap pilih minimal satu Layanan Keahlian Talent HIQMA.");
+        return;
+      }
+
+      // Gather input data
+      const data = {
+        nama_pemohon: document.getElementById('nama_pemohon').value,
+        instansi: document.getElementById('instansi').value,
+        kontak: document.getElementById('kontak').value,
+        email: document.getElementById('email').value,
+        nama_acara: document.getElementById('nama_acara').value,
+        tanggal_acara: document.getElementById('tanggal_acara').value,
+        lokasi: document.getElementById('lokasi').value,
+        layanan: selectedTalents,
+        catatan: document.getElementById('catatan').value
+      };
+
+      console.log("Form submission data:", data);
+
+      // Temporary visual notification since backend is not connected yet
+      alert(`Terima kasih, ${data.nama_pemohon}! Pengajuan booking untuk acara "${data.nama_acara}" telah disimpan di sistem frontend. Pengintegrasian API backend akan diselesaikan pada Fase 4.`);
+      
+      // Reset form
+      document.getElementById('booking-form').reset();
+      document.querySelectorAll('#talent-selection-grid label').forEach(label => {
+        label.classList.remove('border-hiqma-gold', 'bg-hiqma-navy/5', 'shadow-inner');
+        label.classList.add('border-gray-200');
+      });
+    }
+  </script>
+</body>
+</html>

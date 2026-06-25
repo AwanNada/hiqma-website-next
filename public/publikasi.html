@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publikasi & Galeri | UKM HIQMA UIN Syarif Hidayatullah Jakarta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hiqma: {
+              navy: '#0F2D59',
+              navyLight: '#163e75',
+              gold: '#D4AF37',
+              goldHover: '#B89324',
+              cream: '#F9F8F6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-islamic-pattern min-h-screen flex flex-col font-sans">
+
+  <!-- NAVBAR / HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-hiqma-navy/5 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="/" class="flex items-center gap-3">
+          <div class="flex items-center">
+            <!-- UIN Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-UinJkt.png" alt="Logo UIN Jakarta">
+          </div>
+          <div class="flex items-center border-l border-gray-300 pl-3">
+            <!-- HIQMA Logo -->
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          </div>
+          <!-- Kabinet Logo -->
+          <div class="flex items-center border-l border-gray-300 pl-3 hidden sm:flex">
+            <img class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm" src="/Images/Logo-kabinet-ashfiya.png" alt="Logo Kabinet Ashfiya">
+            <div class="ml-2 flex flex-col justify-center">
+              <span class="text-xs font-bold text-hiqma-navy leading-none">KABINET</span>
+              <span class="text-xs font-extrabold text-hiqma-gold tracking-widest leading-none">ASHFIYA</span>
+            </div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Beranda</a>
+          <a href="/profil" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Profil</a>
+          <a href="/publikasi" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Publikasi & Galeri</a>
+          <a href="/booking" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Booking Talent</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="/booking" class="btn-gold px-5 py-2.5 rounded-xl text-sm shadow-sm hidden lg:block">
+            Pesan Layanan
+          </a>
+          <a href="/login" class="btn-outline-blue px-5 py-2.5 rounded-xl text-sm">
+            Login Anggota
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
+      <a href="/" class="block text-gray-700 font-medium py-2">Beranda</a>
+      <a href="/profil" class="block text-gray-700 font-medium py-2">Profil</a>
+      <a href="/publikasi" class="block text-hiqma-navy font-bold py-2">Publikasi & Galeri</a>
+      <a href="/booking" class="block text-gray-700 font-medium py-2">Booking Talent</a>
+      <a href="/booking" class="block text-center btn-gold py-2.5 rounded-xl text-sm mt-4">Pesan Layanan</a>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="bg-islamic-dark text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-hiqma-navy to-hiqma-navyLight z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Publikasi & Galeri Kegiatan</h1>
+      <p class="text-hiqma-gold font-serif italic text-base sm:text-lg">
+        Ikuti perkembangan syiar, berita terkini, artikel islami, dan arsip visual dokumentasi kami
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION A: PORTAL BERITA & ARTIKEL
+       ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-3">
+        <button onclick="filterKategori('Semua')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-hiqma-navy text-white transition-all shadow-sm">Semua</button>
+        <button onclick="filterKategori('Berita')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:border-hiqma-navy hover:text-hiqma-navy transition-all">Berita</button>
+        <button onclick="filterKategori('Artikel')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:border-hiqma-navy hover:text-hiqma-navy transition-all">Artikel</button>
+        <button onclick="filterKategori('Pengumuman')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:border-hiqma-navy hover:text-hiqma-navy transition-all">Pengumuman</button>
+      </div>
+      <!-- Search Input -->
+      <div class="relative w-full md:max-w-xs">
+        <input type="text" id="search-input" placeholder="Cari publikasi..." onkeyup="cariPublikasi()" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-white shadow-sm">
+        <svg class="h-4 w-4 text-gray-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+      </div>
+    </div>
+
+    <!-- Publications Grid -->
+    <div id="publications-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Card 1 -->
+      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Pengumuman" data-judul="pelantikan pengurus baru hiqma uin jakarta kabinet ashfiya bakti 2026">
+        <div>
+          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
+          <div class="p-6 space-y-3">
+            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Pengumuman</span>
+            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Pelantikan Pengurus Baru HIQMA UIN Jakarta Kabinet Ashfiya Bakti 2026</h4>
+            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+              Pelantikan kepengurusan baru berlangsung dengan khidmat di Student Center UIN Jakarta. Kepengurusan resmi disahkan dengan mengusung spirit perubahan dan pemasyarakatan Al-Qur'an.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+          <span>25 Januari 2026</span>
+          <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Berita" data-judul="qari delegasi hiqma raih juara 1 mtq mahasiswa tingkat regional">
+        <div>
+          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
+          <div class="p-6 space-y-3">
+            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Berita</span>
+            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Qari Delegasi HIQMA Raih Juara 1 MTQ Mahasiswa Tingkat Regional</h4>
+            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+              Kader terbaik divisi Tilawah kembali membanggakan nama almamater dengan menyabet gelar qari terbaik dalam ajang kompetisi seni Al-Qur'an antar perguruan tinggi.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+          <span>18 Februari 2026</span>
+          <span class="font-semibold text-hiqma-navy">Oleh: Media Officer</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Berita" data-judul="safari ramadhan 1447 h tebar keberkahan dengan tasmi al-quran">
+        <div>
+          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
+          <div class="p-6 space-y-3">
+            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Berita</span>
+            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Safari Ramadhan 1447 H: Tebar Keberkahan dengan Tasmi' Al-Qur'an</h4>
+            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+              HIQMA sukses merampungkan rangkaian Safari Ramadhan dengan mengadakan pengajian umum, bakti sosial, serta penampilan tim seni islami di wilayah Jabodetabek.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+          <span>22 Maret 2026</span>
+          <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Artikel" data-judul="keutamaan membaca al-qur-an secara tartil dan tajwid yang benar">
+        <div>
+          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
+          <div class="p-6 space-y-3">
+            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Artikel</span>
+            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Keutamaan Membaca Al-Qur'an secara Tartil dan Tajwid yang Benar</h4>
+            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+              Membaca Al-Qur'an dengan tartil merupakan perintah agama untuk menghayati makna terdalam di balik baris kalimat kalam ilahi, sekaligus mendatangkan berkah.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+          <span>10 April 2026</span>
+          <span class="font-semibold text-hiqma-navy">Oleh: Litbang</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION B: GALERI KEGIATAN (PHOTO LIGHTBOX)
+       ========================================== -->
+  <section class="bg-white py-20 border-t border-b border-gray-100 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-xs font-bold text-hiqma-gold uppercase tracking-widest">Dokumentasi Visual</h2>
+        <h3 class="text-3xl font-extrabold text-hiqma-navy gold-border-center">Galeri Kegiatan HIQMA</h3>
+        <p class="text-gray-500 text-sm pt-2">Klik gambar di bawah ini untuk melihat dokumentasi kegiatan resmi kami</p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Photo 1 -->
+        <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100 aspect-square" onclick="openLightbox('Pelantikan Pengurus 2026', 'Momen pelantikan seluruh pengurus Kabinet Ashfiya masa bakti tahun 2026 di Student Center UIN Jakarta.')">
+          <div class="absolute inset-0 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs uppercase z-10 group-hover:scale-105 transition-transform duration-500">Pelantikan 2026</div>
+          <div class="absolute inset-0 bg-hiqma-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 z-20">
+            <span class="text-white font-bold text-xs">Pelantikan Pengurus</span>
+            <span class="text-hiqma-gold text-[10px] mt-0.5">Lihat Dokumentasi &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100 aspect-square" onclick="openLightbox('Safari Ramadhan 1447 H', 'Tim marawis dan hadrah berkolaborasi mengadakan penampilan dakwah kreatif dalam syiar Safari Ramadhan.')">
+          <div class="absolute inset-0 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs uppercase z-10 group-hover:scale-105 transition-transform duration-500">Safari Ramadhan</div>
+          <div class="absolute inset-0 bg-hiqma-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 z-20">
+            <span class="text-white font-bold text-xs">Safari Ramadhan</span>
+            <span class="text-hiqma-gold text-[10px] mt-0.5">Lihat Dokumentasi &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100 aspect-square" onclick="openLightbox('Bimbingan Rutin Kaligrafi', 'Anggota divisi Kaligrafi sedang melakukan latihan rutin khat Naskhi dan Riq\'ah bersama senior.')">
+          <div class="absolute inset-0 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs uppercase z-10 group-hover:scale-105 transition-transform duration-500">Bimbingan Kaligrafi</div>
+          <div class="absolute inset-0 bg-hiqma-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 z-20">
+            <span class="text-white font-bold text-xs">Bimbingan Kaligrafi</span>
+            <span class="text-hiqma-gold text-[10px] mt-0.5">Lihat Dokumentasi &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100 aspect-square" onclick="openLightbox('Upgrading Kepengurusan', 'Momen keakraban pengurus baru HIQMA dalam upgrading keorganisasian demi meningkatkan kesolidan kerja.')">
+          <div class="absolute inset-0 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs uppercase z-10 group-hover:scale-105 transition-transform duration-500">Upgrading Kabinet</div>
+          <div class="absolute inset-0 bg-hiqma-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 z-20">
+            <span class="text-white font-bold text-xs">Upgrading Pengurus</span>
+            <span class="text-hiqma-gold text-[10px] mt-0.5">Lihat Dokumentasi &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       LIGHTBOX MODAL FOR GALLERY
+       ========================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl overflow-hidden max-w-lg w-full border border-gray-200 relative flex flex-col shadow-2xl animate-in fade-in duration-300">
+      
+      <!-- Close Button -->
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 p-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full z-30 transition-colors">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+
+      <!-- Lightbox Display Screen -->
+      <div class="h-64 bg-islamic-dark flex items-center justify-center text-white relative">
+        <svg class="h-16 w-16 text-hiqma-gold opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        <span class="absolute bottom-4 left-4 bg-hiqma-navy/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-hiqma-gold font-bold uppercase tracking-wider">Dokumentasi Resmi</span>
+      </div>
+
+      <!-- Info Area -->
+      <div class="p-6 space-y-2">
+        <h4 id="lightbox-title" class="text-lg font-bold text-hiqma-navy">Judul Kegiatan</h4>
+        <p id="lightbox-desc" class="text-gray-500 text-xs leading-relaxed">Keterangan rinci mengenai jalannya kegiatan dan keterlibatan anggota HIQMA.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-islamic-dark text-white pt-16 pb-8 border-t border-hiqma-gold/25 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+      
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <svg class="h-10 w-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="4" />
+            <circle cx="50" cy="50" r="39" stroke="#D4AF37" stroke-width="1" stroke-dasharray="2 2" />
+            <path d="M35 30v40M47 30v40M58 30v40M68 30v40M35 50h33" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="41" cy="62" r="3" fill="#FFFFFF" />
+            <circle cx="63" cy="62" r="3" fill="#FFFFFF" />
+          </svg>
+          <div>
+            <h4 class="font-bold text-lg tracking-wide text-white leading-none">UKM HIQMA</h4>
+            <span class="text-[10px] text-hiqma-gold font-bold tracking-widest">UIN SYARIF HIDAYATULLAH JAKARTA</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-xs leading-relaxed max-w-sm">
+          Unit Kegiatan Mahasiswa pembinaan minat bakat seni Al-Qur'an dan organisasi di bawah naungan Wakil Rektor Kemahasiswaan UIN Jakarta.
+        </p>
+        <div class="text-xs text-hiqma-gold font-semibold italic">
+          "Damai bersama Al-Qur'an"
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Tautan Pintas</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Sejarah & Visi Misi</a></li>
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Struktur Kepengurusan</a></li>
+          <li><a href="/publikasi" class="hover:text-hiqma-gold transition-colors">Berita & Publikasi</a></li>
+          <li><a href="/booking" class="hover:text-hiqma-gold transition-colors">Layanan Talent Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Sekretariat</h4>
+        <p class="text-white/70 text-xs leading-relaxed">
+          Gedung Student Center Lt. 3, UIN Syarif Hidayatullah Jakarta<br>
+          Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
+        </p>
+        <div class="space-y-1 text-xs text-white/70">
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
+          <div><span class="text-hiqma-gold font-semibold">Website:</span> hiqmauinjkt.com</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
+      <span>&copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. Hak Cipta Dilindungi.</span>
+      <span>Kabinet Ashfiya 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile navigation menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Lightbox modal logic
+    function openLightbox(title, desc) {
+      document.getElementById('lightbox-title').innerText = title;
+      document.getElementById('lightbox-desc').innerText = desc;
+      document.getElementById('lightbox-modal').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+
+    // Category filtering logic
+    function filterKategori(kategori) {
+      // Toggle button active styling
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.innerText === kategori) {
+          btn.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+          btn.classList.add('bg-hiqma-navy', 'text-white');
+        } else {
+          btn.classList.remove('bg-hiqma-navy', 'text-white');
+          btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+        }
+      });
+
+      // Show/hide grid elements
+      document.querySelectorAll('#publications-grid article').forEach(card => {
+        if (kategori === 'Semua' || card.dataset.kategori === kategori) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Live search filtering
+    function cariPublikasi() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      document.querySelectorAll('#publications-grid article').forEach(card => {
+        const title = card.dataset.judul;
+        if (title.includes(q)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
