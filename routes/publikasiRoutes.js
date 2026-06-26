@@ -8,8 +8,12 @@ const publikasiController = require('../controllers/publikasiController');
 
 // Ensure upload directory exists
 const uploadDir = path.join(__dirname, '..', 'public', 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Warning: Could not create upload directory (normal in serverless environments like Vercel):', err.message);
 }
 
 // Multer Storage Configuration
