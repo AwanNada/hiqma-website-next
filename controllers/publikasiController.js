@@ -34,6 +34,35 @@ exports.getPublished = async (req, res, next) => {
   }
 };
 
+// 1.5. Get a single publication by ID (for public detail page)
+exports.getById = async (req, res, next) => {
+  const { id } = req.params;
+  let connection;
+  try {
+    connection = await db.getConnection();
+    const [rows] = await connection.query(
+      'SELECT id_publikasi, judul, isi, tgl_terbit, kategori, thumbnail, created_at FROM Tabel_Publikasi WHERE id_publikasi = ? AND status = ?',
+      [id, 'Published']
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Artikel tidak ditemukan atau belum diterbitkan'
+      });
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: rows[0]
+    });
+  } catch (error) {
+    next(error);
+  } finally {
+    if (connection) connection.release();
+  }
+};
+
 // 2. Get all publications (for admin dashboard)
 exports.getAll = async (req, res, next) => {
   let connection;

@@ -4,16 +4,12 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const authMiddleware = require('../middleware/authMiddleware');
-const publikasiController = require('../controllers/publikasiController');
+const galeriController = require('../controllers/galeriController');
 
 // Ensure upload directory exists
 const uploadDir = path.join(__dirname, '..', 'public', 'uploads');
-try {
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-  }
-} catch (err) {
-  console.warn('Warning: Could not create upload directory (normal in serverless environments like Vercel):', err.message);
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 // Multer Storage Configuration
@@ -23,7 +19,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, 'thumbnail-' + uniqueSuffix + path.extname(file.originalname));
+    cb(null, 'gallery-' + uniqueSuffix + path.extname(file.originalname));
   }
 });
 
@@ -45,14 +41,11 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-// Public Endpoints
-router.get('/', publikasiController.getPublished);
-router.get('/:id', publikasiController.getById);
+// Public Endpoint
+router.get('/', galeriController.getGaleri);
 
 // Protected Admin Endpoints
-router.get('/admin', authMiddleware, publikasiController.getAll);
-router.post('/admin', authMiddleware, upload.single('thumbnail'), publikasiController.create);
-router.put('/admin/:id', authMiddleware, upload.single('thumbnail'), publikasiController.update);
-router.delete('/admin/:id', authMiddleware, publikasiController.delete);
+router.post('/admin', authMiddleware, upload.single('file'), galeriController.createGaleri);
+router.delete('/admin/:id', authMiddleware, galeriController.deleteGaleri);
 
 module.exports = router;

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Publikasi - UKM HIQMA</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hiqma-navy': '#0F2D59',
+            'hiqma-gold': '#D4AF37',
+            'hiqma-cream': '#F9F8F6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Premium Article Content Styling */
+    .article-content {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #374151; /* gray-700 */
+    }
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+    .article-content h1, .article-content h2, .article-content h3 {
+      color: #0F2D59;
+      font-weight: 800;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .article-content h1 { font-size: 1.8rem; }
+    .article-content h2 { font-size: 1.5rem; }
+    .article-content h3 { font-size: 1.25rem; }
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .article-content ul { list-style-type: disc; }
+    .article-content ol { list-style-type: decimal; }
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+    .article-content blockquote {
+      border-left: 4px solid #D4AF37;
+      padding-left: 1.25rem;
+      font-style: italic;
+      color: #4B5563;
+      margin: 1.5rem 0;
+      background-color: #F9F8F6;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-radius: 0 8px 8px 0;
+    }
+    .article-content a {
+      color: #D4AF37;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .article-content img {
+      border-radius: 1rem;
+      margin: 2rem auto;
+      max-height: 500px;
+      object-contain: contain;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-hiqma-cream min-h-screen flex flex-col font-['Plus_Jakarta_Sans']">
+
+  <!-- ==========================================
+       HEADER (Navigation Bar)
+       ========================================== -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3">
+        <img class="h-10 w-auto" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+        <div>
+          <span class="text-xs font-bold text-hiqma-navy tracking-widest block uppercase">UKM HIQMA</span>
+          <span class="text-[9px] font-bold text-hiqma-gold block uppercase tracking-wide">UIN Syarif Hidayatullah Jakarta</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold text-hiqma-navy tracking-wide uppercase">
+        <a href="/" class="hover:text-hiqma-gold transition-colors">Beranda</a>
+        <a href="/profil" class="hover:text-hiqma-gold transition-colors">Profil</a>
+        <a href="/publikasi" class="text-hiqma-gold transition-colors">Publikasi</a>
+        <a href="/booking" class="bg-hiqma-gold hover:bg-yellow-600 text-hiqma-navy px-4 py-2.5 rounded-xl transition-all shadow-sm">Booking Talent</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-hiqma-navy focus:outline-none">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 py-4 px-6 flex flex-col gap-4 text-xs font-bold text-hiqma-navy uppercase tracking-wide">
+      <a href="/" class="hover:text-hiqma-gold py-1 transition-colors">Beranda</a>
+      <a href="/profil" class="hover:text-hiqma-gold py-1 transition-colors">Profil</a>
+      <a href="/publikasi" class="text-hiqma-gold py-1 transition-colors">Publikasi</a>
+      <a href="/booking" class="bg-hiqma-gold text-hiqma-navy px-4 py-2.5 rounded-xl text-center transition-all mt-2">Booking Talent</a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT (Article Detail)
+       ========================================== -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-6">
+    
+    <!-- Back Button -->
+    <a href="/publikasi" class="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-hiqma-navy transition-colors group">
+      <svg class="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      <span>Kembali ke Berita & Publikasi</span>
+    </a>
+
+    <!-- Error State Container -->
+    <div id="error-container" class="hidden bg-white border border-red-100 p-8 rounded-3xl text-center space-y-4 shadow-sm">
+      <div class="h-14 w-14 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto">
+        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <h3 id="error-title" class="text-lg font-bold text-hiqma-navy">Gagal Memuat Berita</h3>
+      <p id="error-msg" class="text-sm text-gray-500 max-w-md mx-auto">Tautan yang Anda ikuti salah atau artikel ini telah dihapus oleh administrator.</p>
+    </div>
+
+    <!-- Article Content Card -->
+    <article id="article-card" class="bg-white border border-gray-100 rounded-3xl shadow-sm p-6 sm:p-10 space-y-6 relative overflow-hidden">
+      
+      <!-- Category Badge & Share -->
+      <div class="flex items-center justify-between">
+        <span id="article-category" class="px-3 py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gray-100 text-gray-500">
+          Loading...
+        </span>
+        
+        <button onclick="copyArticleLink()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-400 hover:text-hiqma-navy transition-all px-3 py-1.5 rounded-xl bg-gray-50 border border-gray-100 hover:border-gray-200">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 10.742l4.184-2.02m0 0a3.001 3.001 0 112.518 3.568l-4.184 2.019m0 0a3.001 3.001 0 11-2.518-3.567" />
+          </svg>
+          <span id="share-text">Bagikan Link</span>
+        </button>
+      </div>
+
+      <!-- Title -->
+      <h1 id="article-title" class="text-2xl sm:text-4xl font-extrabold text-hiqma-navy leading-tight">
+        Sedang memuat judul publikasi...
+      </h1>
+
+      <!-- Date / Author Info -->
+      <div class="flex items-center gap-3 text-xs text-gray-400 border-b border-gray-100 pb-5">
+        <div class="h-8 w-8 rounded-full bg-hiqma-navy/5 flex items-center justify-center text-hiqma-navy flex-shrink-0">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-bold text-hiqma-navy">Ditulis oleh: Humas HIQMA</p>
+          <p id="article-date" class="text-[10px]">Memuat tanggal...</p>
+        </div>
+      </div>
+
+      <!-- Cover Image Thumbnail -->
+      <div id="article-img-container" class="hidden rounded-2xl overflow-hidden border border-gray-100 shadow-sm max-h-[450px] w-full flex items-center justify-center bg-gray-50">
+        <img id="article-img" src="" alt="Cover Image" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Article Rich Text Content -->
+      <div id="article-content" class="article-content pt-4">
+        <!-- quill HTML content loaded here -->
+        <p>Mohon tunggu sebentar, sedang memuat isi artikel...</p>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="bg-hiqma-navy text-white pt-16 pb-8 border-t-4 border-hiqma-gold mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+      
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <img class="h-12 w-auto bg-white/10 rounded-full p-1 border border-white/20" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          <div>
+            <h4 class="font-extrabold text-base tracking-widest text-white uppercase">UKM HIQMA</h4>
+            <span class="text-[10px] text-hiqma-gold font-bold block tracking-wider">UIN Syarif Hidayatullah Jakarta</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-xs leading-relaxed max-w-sm">
+          Wadah pengembangan potensi mahasiswa dalam mendalami Al-Qur'an, seni religi Islam, serta kepemimpinan sejak tahun 1988.
+        </p>
+      </div>
+
+      <div class="md:col-span-3 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Menu Pintas</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><a href="/" class="hover:text-hiqma-gold transition-colors">Beranda</a></li>
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Sejarah & Kepengurusan</a></li>
+          <li><a href="/publikasi" class="hover:text-hiqma-gold transition-colors">Berita & Publikasi</a></li>
+          <li><a href="/booking" class="hover:text-hiqma-gold transition-colors">Layanan Talent Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Sekretariat</h4>
+        <p class="text-white/70 text-xs leading-relaxed">
+          Gedung Student Center Lt. 3, UIN Syarif Hidayatullah Jakarta<br>
+          Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
+        </p>
+        <div class="space-y-1 text-xs text-white/70">
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
+      <span>&copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. Hak Cipta Dilindungi.</span>
+      <span>Kabinet Ashfiya 2026</span>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       PAGE LOGIC (Javascript fetch)
+       ========================================== -->
+  <script>
+    // Toggle mobile navigation menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Extract ID from path
+    const pathParts = window.location.pathname.split('/');
+    const id = pathParts[pathParts.length - 1];
+
+    if (!id || isNaN(id)) {
+      showError('Format Tautan Salah', 'ID publikasi tidak valid.');
+    } else {
+      loadArticle(id);
+    }
+
+    async function loadArticle(pubId) {
+      try {
+        const response = await fetch(`/api/publikasi/${pubId}`);
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          const pub = data.data;
+          
+          // Populate page contents
+          document.title = `${pub.judul} - UKM HIQMA`;
+          document.getElementById('article-title').textContent = pub.judul;
+          
+          const formattedDate = new Date(pub.created_at).toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+          document.getElementById('article-date').textContent = formattedDate;
+
+          const catBadge = document.getElementById('article-category');
+          catBadge.textContent = pub.kategori;
+          
+          // Badge Styling
+          if (pub.kategori === 'Berita') {
+            catBadge.className = 'px-3 py-1.5 rounded-xl bg-blue-50 text-blue-600 font-bold text-xs uppercase tracking-wider';
+          } else if (pub.kategori === 'Artikel') {
+            catBadge.className = 'px-3 py-1.5 rounded-xl bg-purple-50 text-purple-600 font-bold text-xs uppercase tracking-wider';
+          } else {
+            catBadge.className = 'px-3 py-1.5 rounded-xl bg-yellow-50 text-yellow-600 font-bold text-xs uppercase tracking-wider';
+          }
+
+          // Cover Image
+          const imgContainer = document.getElementById('article-img-container');
+          const img = document.getElementById('article-img');
+          if (pub.thumbnail) {
+            img.src = pub.thumbnail;
+            img.alt = pub.judul;
+            imgContainer.classList.remove('hidden');
+          } else {
+            imgContainer.classList.add('hidden');
+          }
+
+          // Content HTML
+          document.getElementById('article-content').innerHTML = pub.isi;
+        } else {
+          showError('Berita Tidak Ditemukan', data.message || 'Artikel ini mungkin belum diterbitkan atau telah dihapus.');
+        }
+      } catch (err) {
+        console.error(err);
+        showError('Kesalahan Server', 'Gagal memuat artikel dari database. Pastikan koneksi server menyala.');
+      }
+    }
+
+    function showError(title, msg) {
+      document.getElementById('article-card').classList.add('hidden');
+      document.getElementById('error-title').textContent = title;
+      document.getElementById('error-msg').textContent = msg;
+      document.getElementById('error-container').classList.remove('hidden');
+    }
+
+    function copyArticleLink() {
+      const currentUrl = window.location.href;
+      navigator.clipboard.writeText(currentUrl).then(() => {
+        const shareBtnText = document.getElementById('share-text');
+        shareBtnText.textContent = 'Link Disalin!';
+        setTimeout(() => {
+          shareBtnText.textContent = 'Bagikan Link';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+      });
+    }
+  </script>
+</body>
+</html>
