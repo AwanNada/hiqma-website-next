@@ -7,7 +7,7 @@ services:
       MYSQL_DATABASE: db_hiqma
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes" # Set to "yes" to match the empty password in .env
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql

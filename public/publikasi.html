@@ -120,79 +120,9 @@
 
     <!-- Publications Grid -->
     <div id="publications-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Card 1 -->
-      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Pengumuman" data-judul="pelantikan pengurus baru hiqma uin jakarta kabinet ashfiya bakti 2026">
-        <div>
-          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
-          <div class="p-6 space-y-3">
-            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Pengumuman</span>
-            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Pelantikan Pengurus Baru HIQMA UIN Jakarta Kabinet Ashfiya Bakti 2026</h4>
-            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-              Pelantikan kepengurusan baru berlangsung dengan khidmat di Student Center UIN Jakarta. Kepengurusan resmi disahkan dengan mengusung spirit perubahan dan pemasyarakatan Al-Qur'an.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-          <span>25 Januari 2026</span>
-          <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Berita" data-judul="qari delegasi hiqma raih juara 1 mtq mahasiswa tingkat regional">
-        <div>
-          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
-          <div class="p-6 space-y-3">
-            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Berita</span>
-            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Qari Delegasi HIQMA Raih Juara 1 MTQ Mahasiswa Tingkat Regional</h4>
-            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-              Kader terbaik divisi Tilawah kembali membanggakan nama almamater dengan menyabet gelar qari terbaik dalam ajang kompetisi seni Al-Qur'an antar perguruan tinggi.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-          <span>18 Februari 2026</span>
-          <span class="font-semibold text-hiqma-navy">Oleh: Media Officer</span>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Berita" data-judul="safari ramadhan 1447 h tebar keberkahan dengan tasmi al-quran">
-        <div>
-          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
-          <div class="p-6 space-y-3">
-            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Berita</span>
-            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Safari Ramadhan 1447 H: Tebar Keberkahan dengan Tasmi' Al-Qur'an</h4>
-            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-              HIQMA sukses merampungkan rangkaian Safari Ramadhan dengan mengadakan pengajian umum, bakti sosial, serta penampilan tim seni islami di wilayah Jabodetabek.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-          <span>22 Maret 2026</span>
-          <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="Artikel" data-judul="keutamaan membaca al-qur-an secara tartil dan tajwid yang benar">
-        <div>
-          <div class="h-48 bg-islamic-dark flex items-center justify-center font-bold text-white text-xs tracking-widest uppercase">HIQMA NEWS</div>
-          <div class="p-6 space-y-3">
-            <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Artikel</span>
-            <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">Keutamaan Membaca Al-Qur'an secara Tartil dan Tajwid yang Benar</h4>
-            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-              Membaca Al-Qur'an dengan tartil merupakan perintah agama untuk menghayati makna terdalam di balik baris kalimat kalam ilahi, sekaligus mendatangkan berkah.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-          <span>10 April 2026</span>
-          <span class="font-semibold text-hiqma-navy">Oleh: Litbang</span>
-        </div>
-      </article>
-
+      <div class="col-span-3 text-center py-12 text-gray-400">
+        Sedang memuat publikasi terbaru...
+      </div>
     </div>
   </section>
 
@@ -388,6 +318,73 @@
         }
       });
     }
+
+    // Fetch and Render Publications dynamically from backend DB
+    let articlesList = [];
+
+    async function fetchPublications() {
+      const grid = document.getElementById('publications-grid');
+      try {
+        const res = await fetch('/api/publikasi');
+        const data = await res.json();
+        if (res.ok && data.status === 'success') {
+          articlesList = data.data;
+          renderPublications(articlesList);
+        } else {
+          grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-400">Gagal memuat publikasi: ${data.message}</div>`;
+        }
+      } catch (err) {
+        console.error('Failed to fetch publications:', err);
+        grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-400 font-medium">Gagal memuat publikasi. Pastikan koneksi server/database aktif.</div>`;
+      }
+    }
+
+    function renderPublications(list) {
+      const grid = document.getElementById('publications-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-3 text-center py-12 text-gray-400 font-medium">
+            Belum ada publikasi yang diterbitkan saat ini.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = list.map(pub => {
+        const date = new Date(pub.created_at).toLocaleDateString('id-ID', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        
+        const thumbnail = pub.thumbnail || '/Images/Logo-Hiqma-uinjkt.png';
+        const searchTitle = pub.judul.toLowerCase();
+
+        return `
+          <article class="paper-card overflow-hidden flex flex-col justify-between" data-kategori="${pub.kategori}" data-judul="${searchTitle}">
+            <div>
+              <div class="h-48 bg-hiqma-navy/5 relative overflow-hidden flex items-center justify-center border-b border-gray-100">
+                <img src="${thumbnail}" alt="${pub.judul}" class="h-full w-full object-cover">
+              </div>
+              <div class="p-6 space-y-3">
+                <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">${pub.kategori}</span>
+                <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">${pub.judul}</h4>
+                <div class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  ${pub.isi}
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+              <span>${date}</span>
+              <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Load publications on startup
+    window.addEventListener('DOMContentLoaded', fetchPublications);
   </script>
 </body>
 </html>

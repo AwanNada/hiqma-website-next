@@ -5,6 +5,10 @@ require('dotenv').config();
 const path = require('path');
 const db = require('./config/db');
 
+// Route imports
+const authRoutes = require('./routes/authRoutes');
+const publikasiRoutes = require('./routes/publikasiRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -33,6 +37,15 @@ app.get('/booking', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'booking.html'));
 });
 
+// Friendly URL Routing for Admin Dashboard
+app.get('/admin/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin', 'login.html'));
+});
+
+app.get('/admin/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin', 'dashboard.html'));
+});
+
 // Test database connection at startup
 (async () => {
   try {
@@ -44,6 +57,10 @@ app.get('/booking', (req, res) => {
     console.error(error.message);
   }
 })();
+
+// API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/publikasi', publikasiRoutes);
 
 // Base API Route
 app.get('/api', (req, res) => {
@@ -57,9 +74,9 @@ app.get('/api', (req, res) => {
 // Centralized error handler middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({
+  res.status(err.status || 500).json({
     status: 'error',
-    message: 'Something went wrong on the server!'
+    message: err.message || 'Something went wrong on the server!'
   });
 });
 

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Dashboard Admin - UKM HIQMA</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Quill.js Rich Text Editor CSS -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hiqma-navy': '#0F2D59',
+            'hiqma-gold': '#D4AF37',
+            'hiqma-cream': '#F9F8F6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Quill Editor custom styling */
+    .ql-editor {
+      min-height: 200px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+    }
+    .ql-toolbar.ql-snow {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      border-color: rgba(229, 231, 235, 1);
+    }
+    #editor-container {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      border-color: rgba(229, 231, 235, 1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-['Plus_Jakarta_Sans'] flex flex-col">
+
+  <!-- Top Navigation Header -->
+  <header class="bg-hiqma-navy text-white shadow-md py-4 px-6 flex items-center justify-between sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <img src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA" class="h-10 w-10 object-contain bg-white/10 rounded-full p-1 border border-hiqma-gold/30">
+      <div>
+        <h1 class="text-sm font-bold tracking-wide">CMS KABINET ASHFIYA 2026</h1>
+        <p class="text-[10px] text-white/60">Portal Publikasi & Berita UKM HIQMA</p>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <div class="text-right hidden sm:block">
+        <p id="admin-name" class="text-xs font-bold text-hiqma-gold">Administrator</p>
+        <p id="admin-email" class="text-[9px] text-white/50">admin@hiqma.org</p>
+      </div>
+      <button onclick="handleLogout()" class="bg-red-500/10 hover:bg-red-500/20 text-red-200 border border-red-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
+        <span>Logout</span>
+        <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 flex-grow w-full">
+    
+    <!-- Welcome banner / stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      
+      <!-- Card 1: Total -->
+      <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm flex items-center justify-between">
+        <div class="space-y-1">
+          <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Publikasi</p>
+          <p id="stat-total" class="text-3xl font-extrabold text-hiqma-navy">-</p>
+        </div>
+        <div class="h-12 w-12 rounded-xl bg-hiqma-navy/5 text-hiqma-navy flex items-center justify-center">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Published -->
+      <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm flex items-center justify-between">
+        <div class="space-y-1">
+          <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Status Terbit</p>
+          <p id="stat-published" class="text-3xl font-extrabold text-green-600">-</p>
+        </div>
+        <div class="h-12 w-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 3: Draft -->
+      <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm flex items-center justify-between">
+        <div class="space-y-1">
+          <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Status Draf</p>
+          <p id="stat-draft" class="text-3xl font-extrabold text-orange-500">-</p>
+        </div>
+        <div class="h-12 w-12 rounded-xl bg-orange-50 text-orange-50 flex items-center justify-center">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Data Panel -->
+    <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+      
+      <!-- Panel Header -->
+      <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-hiqma-navy">Daftar Publikasi Humas</h2>
+          <p class="text-xs text-gray-400">Tim PR bisa menulis, merilis, atau mendrafkan artikel melalui panel ini.</p>
+        </div>
+        
+        <button onclick="openModal('add')" class="bg-hiqma-gold hover:bg-yellow-600 text-hiqma-navy font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          <span>Tulis Publikasi</span>
+        </button>
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto w-full">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-100 text-gray-400 uppercase tracking-wider font-bold">
+              <th class="p-4 w-20">Gambar</th>
+              <th class="p-4">Judul Publikasi</th>
+              <th class="p-4 w-32">Kategori</th>
+              <th class="p-4 w-32">Status</th>
+              <th class="p-4 w-40">Tgl Dibuat</th>
+              <th class="p-4 w-32 text-right">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="publications-tbody" class="divide-y divide-gray-100 text-gray-600">
+            <!-- Dynamic list generated by JS -->
+            <tr>
+              <td colspan="6" class="p-8 text-center text-gray-400">Sedang memuat data publikasi...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       MODAL FORM (Tulis / Edit Publikasi)
+       ========================================== -->
+  <div id="modal-container" class="fixed inset-0 bg-hiqma-navy/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white border border-gray-100 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white z-10">
+        <div>
+          <h3 id="modal-title" class="text-base font-extrabold text-hiqma-navy">Tulis Publikasi Baru</h3>
+          <p class="text-[11px] text-gray-400">Konten tulisan PR otomatis diformat dan disimpan ke database.</p>
+        </div>
+        <button onclick="closeModal()" class="text-gray-400 hover:text-hiqma-navy transition-colors">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body (Form) -->
+      <form id="publication-form" class="p-6 space-y-5 flex-grow" enctype="multipart/form-data">
+        <input type="hidden" id="edit-id">
+
+        <!-- Title field -->
+        <div class="space-y-1">
+          <label for="judul" class="text-xs font-bold text-gray-700">Judul Publikasi</label>
+          <input type="text" id="judul" required placeholder="Contoh: Kegiatan Upgrading Pengurus Kabinet Ashfiya"
+            class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-hiqma-navy bg-gray-50 transition-colors">
+        </div>
+
+        <!-- Meta fields: Category & Status & Thumbnail -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Category -->
+          <div class="space-y-1">
+            <label for="kategori" class="text-xs font-bold text-gray-700">Kategori</label>
+            <select id="kategori" required class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-hiqma-navy bg-gray-50 transition-colors">
+              <option value="Berita">Berita</option>
+              <option value="Artikel">Artikel</option>
+              <option value="Pengumuman">Pengumuman</option>
+            </select>
+          </div>
+          <!-- Status -->
+          <div class="space-y-1">
+            <label for="status" class="text-xs font-bold text-gray-700">Status Terbit</label>
+            <select id="status" required class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-hiqma-navy bg-gray-50 transition-colors">
+              <option value="Published">Terbitkan (Published)</option>
+              <option value="Draft">Simpan Draf (Draft)</option>
+            </select>
+          </div>
+          <!-- Image Upload -->
+          <div class="space-y-1">
+            <label for="thumbnail" class="text-xs font-bold text-gray-700">Gambar Cover (Max 5MB)</label>
+            <input type="file" id="thumbnail" accept="image/*" class="w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-hiqma-navy/5 file:text-hiqma-navy hover:file:bg-hiqma-navy/10 transition-all cursor-pointer">
+            <div id="image-preview-container" class="hidden mt-2 border border-gray-100 rounded-xl overflow-hidden h-20 w-32 bg-gray-50">
+              <img id="image-preview" src="#" alt="Preview" class="h-full w-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Rich Text Content Editor -->
+        <div class="space-y-1">
+          <label class="text-xs font-bold text-gray-700">Isi Konten Artikel</label>
+          <div id="editor-container" class="bg-gray-50">
+            <!-- Quill editor -->
+          </div>
+        </div>
+
+        <!-- Submit actions -->
+        <div class="flex justify-end gap-3 pt-4 border-t border-gray-100">
+          <button type="button" onclick="closeModal()" class="px-4 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-50 transition-colors">Batal</button>
+          <button type="submit" id="modal-submit-btn" class="px-5 py-2.5 rounded-xl bg-hiqma-navy text-white text-xs font-bold hover:bg-opacity-90 transition-all shadow-sm">Simpan Publikasi</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-4 text-center text-[10px] text-gray-400">
+    &copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. CMS Dashboard Admin.
+  </footer>
+
+  <!-- Quill.js script -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script>
+    // Check authentication
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      window.location.href = '/admin/login';
+    } else {
+      const user = JSON.parse(localStorage.getItem('adminUser'));
+      if (user) {
+        document.getElementById('admin-name').textContent = user.nama;
+        document.getElementById('admin-email').textContent = user.email;
+      }
+    }
+
+    // Initialize Quill Editor
+    const quill = new Quill('#editor-container', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['link', 'clean']
+        ]
+      }
+    });
+
+    let currentAction = 'add'; // 'add' or 'edit'
+    let publicationsList = [];
+
+    // Load initial publications list
+    loadPublications();
+
+    async function loadPublications() {
+      try {
+        const response = await fetch('/api/publikasi/admin', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          publicationsList = data.data;
+          renderTable(publicationsList);
+          renderStats(publicationsList);
+        } else if (response.status === 401) {
+          // Token expired or invalid
+          handleLogout();
+        } else {
+          alert('Gagal memuat data: ' + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Gagal mengambil data dari server.');
+      }
+    }
+
+    function renderTable(list) {
+      const tbody = document.getElementById('publications-tbody');
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-gray-400">Belum ada publikasi yang dibuat. Tekan tombol "Tulis Publikasi" untuk membuat konten pertama Anda!</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(pub => {
+        const date = new Date(pub.created_at).toLocaleDateString('id-ID', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+
+        // Status Badge Style
+        const statusBadge = pub.status === 'Published'
+          ? '<span class="px-2 py-1.5 rounded-lg bg-green-50 text-green-600 font-bold text-[10px]">Published</span>'
+          : '<span class="px-2 py-1.5 rounded-lg bg-gray-50 text-gray-400 font-bold text-[10px]">Draft</span>';
+
+        // Category Badge Style
+        let catBadge = '';
+        if (pub.kategori === 'Berita') {
+          catBadge = '<span class="px-2 py-1 rounded-md bg-blue-50 text-blue-600 font-semibold text-[9px]">Berita</span>';
+        } else if (pub.kategori === 'Artikel') {
+          catBadge = '<span class="px-2 py-1 rounded-md bg-purple-50 text-purple-600 font-semibold text-[9px]">Artikel</span>';
+        } else {
+          catBadge = '<span class="px-2 py-1 rounded-md bg-yellow-50 text-yellow-600 font-semibold text-[9px]">Pengumuman</span>';
+        }
+
+        // Thumbnail Preview
+        const imgUrl = pub.thumbnail || '/Images/Logo-Hiqma-uinjkt.png';
+
+        return `
+          <tr class="hover:bg-gray-50 border-b border-gray-50 transition-colors">
+            <td class="p-4">
+              <div class="h-10 w-14 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+                <img src="${imgUrl}" alt="Thumbnail" class="h-full w-full object-cover">
+              </div>
+            </td>
+            <td class="p-4 font-bold text-hiqma-navy text-sm max-w-xs truncate" title="${pub.judul}">
+              ${pub.judul}
+            </td>
+            <td class="p-4">${catBadge}</td>
+            <td class="p-4">${statusBadge}</td>
+            <td class="p-4 text-gray-400 text-[11px]">${date}</td>
+            <td class="p-4 text-right space-x-1">
+              <button onclick="editPublication(${pub.id_publikasi})" class="bg-gray-100 hover:bg-hiqma-navy hover:text-white border border-gray-200 p-1.5 rounded-lg transition-colors" title="Edit">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </button>
+              <button onclick="deletePublication(${pub.id_publikasi})" class="bg-red-50 hover:bg-red-500 hover:text-white border border-red-100 p-1.5 rounded-lg text-red-600 transition-colors" title="Hapus">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderStats(list) {
+      const total = list.length;
+      const published = list.filter(p => p.status === 'Published').length;
+      const draft = list.filter(p => p.status === 'Draft').length;
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-published').textContent = published;
+      document.getElementById('stat-draft').textContent = draft;
+    }
+
+    // Modal control
+    const modal = document.getElementById('modal-container');
+    const form = document.getElementById('publication-form');
+    const previewContainer = document.getElementById('image-preview-container');
+    const previewImg = document.getElementById('image-preview');
+    const fileInput = document.getElementById('thumbnail');
+
+    // Handle thumbnail preview
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImg.src = e.target.result;
+          previewContainer.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewContainer.classList.add('hidden');
+      }
+    });
+
+    function openModal(action, id = null) {
+      currentAction = action;
+      form.reset();
+      quill.setContents([]);
+      previewContainer.classList.add('hidden');
+      
+      if (action === 'add') {
+        document.getElementById('modal-title').textContent = 'Tulis Publikasi Baru';
+        document.getElementById('edit-id').value = '';
+      } else if (action === 'edit') {
+        document.getElementById('modal-title').textContent = 'Edit Publikasi';
+        const pub = publicationsList.find(p => p.id_publikasi === id);
+        if (pub) {
+          document.getElementById('edit-id').value = pub.id_publikasi;
+          document.getElementById('judul').value = pub.judul;
+          document.getElementById('kategori').value = pub.kategori;
+          document.getElementById('status').value = pub.status;
+          
+          // Load HTML content into Quill editor
+          quill.clipboard.dangerouslyPasteHTML(pub.isi);
+
+          // Preview existing thumbnail
+          if (pub.thumbnail) {
+            previewImg.src = pub.thumbnail;
+            previewContainer.classList.remove('hidden');
+          }
+        }
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    // Form Submit handling
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('modal-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Menyimpan...';
+
+      const id = document.getElementById('edit-id').value;
+      const judul = document.getElementById('judul').value;
+      const kategori = document.getElementById('kategori').value;
+      const status = document.getElementById('status').value;
+      
+      // Get HTML content from Quill editor
+      const isi = quill.root.innerHTML;
+
+      if (quill.getText().trim() === '') {
+        alert('Isi artikel tidak boleh kosong!');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Simpan Publikasi';
+        return;
+      }
+
+      // Create FormData object
+      const formData = new FormData();
+      formData.append('judul', judul);
+      formData.append('kategori', kategori);
+      formData.append('status', status);
+      formData.append('isi', isi);
+      
+      if (fileInput.files[0]) {
+        formData.append('thumbnail', fileInput.files[0]);
+      }
+
+      const url = currentAction === 'add'
+        ? '/api/publikasi/admin'
+        : `/api/publikasi/admin/${id}`;
+        
+      const method = currentAction === 'add' ? 'POST' : 'PUT';
+
+      try {
+        const response = await fetch(url, {
+          method: method,
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          closeModal();
+          loadPublications();
+        } else {
+          alert('Gagal menyimpan: ' + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Gagal terhubung ke server.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Simpan Publikasi';
+      }
+    });
+
+    // Delete Publication
+    async function deletePublication(id) {
+      if (!confirm('Apakah Anda yakin ingin menghapus artikel ini?')) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/publikasi/admin/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          loadPublications();
+        } else {
+          alert('Gagal menghapus: ' + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Gagal terhubung ke server.');
+      }
+    }
+
+    // Edit button link
+    function editPublication(id) {
+      openModal('edit', id);
+    }
+
+    // Logout
+    function handleLogout() {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      window.location.href = '/admin/login';
+    }
+  </script>
+</body>
+</html>
