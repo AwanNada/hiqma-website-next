@@ -27,6 +27,20 @@
       }
     }
   </script>
+  <style>
+    .tab-btn-active {
+      color: #0F2D59 !important;
+      border-color: #D4AF37 !important;
+      border-bottom-width: 2px !important;
+    }
+    .talent-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .talent-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px -10px rgba(15, 45, 89, 0.15);
+    }
+  </style>
 </head>
 <body class="bg-islamic-pattern min-h-screen flex flex-col font-sans">
 
@@ -57,17 +71,12 @@
         <nav class="hidden md:flex items-center gap-8">
           <a href="/" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Beranda</a>
           <a href="/profil" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Profil</a>
+          <a href="/prestasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Prestasi</a>
           <a href="/publikasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Publikasi & Galeri</a>
           <a href="/booking" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Booking Talent</a>
         </nav>
 
         <div class="flex items-center gap-4">
-          <a href="/booking" class="btn-gold px-5 py-2.5 rounded-xl text-sm shadow-sm hidden lg:block animate-pulse">
-            Pesan Layanan
-          </a>
-          <a href="/login" class="btn-outline-blue px-5 py-2.5 rounded-xl text-sm">
-            Login Anggota
-          </a>
           <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -82,9 +91,9 @@
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
       <a href="/" class="block text-gray-700 font-medium py-2">Beranda</a>
       <a href="/profil" class="block text-gray-700 font-medium py-2">Profil</a>
+      <a href="/prestasi" class="block text-gray-700 font-medium py-2">Prestasi</a>
       <a href="/publikasi" class="block text-gray-700 font-medium py-2">Publikasi & Galeri</a>
       <a href="/booking" class="block text-hiqma-navy font-bold py-2">Booking Talent</a>
-      <a href="/booking" class="block text-center btn-gold py-2.5 rounded-xl text-sm mt-4">Pesan Layanan</a>
     </div>
   </header>
 
@@ -99,11 +108,226 @@
     </div>
   </section>
 
-  <!-- MAIN WORKSPACE -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+  <!-- TAB SWITCH SYSTEM -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 relative z-10">
+    <div class="flex gap-6 border-b border-gray-200">
+      <button id="tab-btn-dokumentasi" onclick="switchBookingTab('dokumentasi')" class="px-6 py-3 font-bold text-sm text-hiqma-navy border-b-2 border-hiqma-gold transition-all duration-300">
+        Serambi Jasa & Dokumentasi
+      </button>
+      <button id="tab-btn-form" onclick="switchBookingTab('form')" class="px-6 py-3 font-semibold text-sm text-gray-500 hover:text-hiqma-navy border-b-2 border-transparent transition-all duration-300">
+        Formulir Pemesanan
+      </button>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 1: SERAMBI JASA (DOKUMENTASI) -->
+  <section id="booking-dokumentasi-tab" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 relative z-10 block">
+    <div class="text-center max-w-2xl mx-auto space-y-2 reveal-hidden">
+      <h2 class="text-xs font-bold text-hiqma-gold uppercase tracking-widest">Dokumentasi</h2>
+      <h3 class="text-3xl font-extrabold text-hiqma-navy"> Penampilan & Penyiaran </h3>
+      <p class="text-gray-500 text-xs">Arsip penampilan talent-talent terbaik HIQMA UIN Jakarta di berbagai acara resmi</p>
+    </div>
+
+    <!-- Gallery Grid of Services -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Hadrah -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="Images/hadrah.jpg" alt="Hadrah HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Seni Rebana</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">Hadrah</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Acara Keagamaan Ramadhan Masjid Raya Bintaro. Penampilan tim Hadrah El-HIQMA melantunkan maulid simtudduror dengan khidmat dan harmonis.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('Hadrah')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan Hadrah
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Marawis -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden reveal-delay-1">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="Images/Marawis.jpg" alt="Marawis HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Perkusi Islami</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">Marawis</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Acara One Day with Orphan Dhuafa Dikyasa. Hadir dengan tabuhan perkusi marawis dinamis berenergi untuk memeriahkan syukuran dan festival.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('Marawis')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan Marawis
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: Syarhil Qur'an -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden reveal-delay-2">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="Images/SyarhilQuran.jpg" alt="Syarhil Qur'an HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Seni Al-Qur'an</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">Syarhil Qur'an</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Khidmat dan Indah Tilawah Malam Peringatan. Perpaduan harmonis 3 delegasi: pensyarah pidato, qari pembaca ayat, dan penerjemah sari tilawah.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('Syarhil')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan Syarhil
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4: Tilawah Al-Qur'an -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="Images/Tilawah.jpg" alt="Tilawah HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Qari / Qariah</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">Tilawah Al-Qur'an</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Pembacaan ayat suci Al-Qur'an dengan lantunan lagu (nagham) yang merdu. Sangat direkomendasikan untuk pembukaan acara formal Anda.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('Tilawah')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan Tilawah
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 5: Shalawat & Vocal -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden reveal-delay-1">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="Images/Gambus.jpg" alt="Vocal HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Solo & Group Vocal</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">Shalawat & Vocal</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Penampilan tim vokal nasyid dan lagu-lagu religi Islami syahdu untuk syukuran, resepsi pernikahan, maupun konser hari besar keagamaan.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('Shalawat')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan Shalawat
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 6: MC Islami -->
+      <div class="talent-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between reveal-hidden reveal-delay-2">
+        <div>
+          <div class="h-52 bg-gray-200 relative overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-115" src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800" alt="MC HIQMA">
+            <span class="absolute top-4 left-4 bg-hiqma-navy text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-opacity-90">Host / Protokoler</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h4 class="text-lg font-bold text-hiqma-navy">MC Islami</h4>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Pemandu acara formal dan semi-formal multibahasa (Arab, Inggris, Indonesia) dengan tata krama Islami yang rapi, tertib, dan berwibawa.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2">
+          <button onclick="pesanTalent('MC')" class="w-full py-2.5 rounded-xl border border-hiqma-gold text-hiqma-gold hover:bg-hiqma-gold hover:text-white font-bold text-xs transition-all text-center">
+            Pesan MC
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Video Highlights Section -->
+    <div class="space-y-8 pt-12 border-t border-gray-100">
+      <div class="text-center max-w-2xl mx-auto space-y-2 reveal-hidden">
+        <h2 class="text-xs font-bold text-hiqma-gold uppercase tracking-widest">Karya Audio Visual</h2>
+        <h3 class="text-2xl font-extrabold text-hiqma-navy"> Video Dokumentasi Penampilan</h3>
+        <p class="text-gray-500 text-xs">Saksikan cuplikan penampilan live dan cover shalawat resmi dari divisi seni HIQMA</p>
+      </div>
+
+      <!-- 2x2 Grid of YouTube Embeds -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Video 1: Tilawah -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm p-4 flex flex-col gap-4 reveal-hidden">
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/z4sOtX-IRtM" title="Tilawah Menyentuh Hati" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="px-2 space-y-1">
+            <span class="text-[9px] font-bold text-hiqma-gold uppercase tracking-widest">Seni Tilawah Al-Qur'an</span>
+            <h4 class="text-sm font-bold text-hiqma-navy leading-snug">Tilawah Menyentuh Hati | Q.S. Al-Mujadilah 11-12</h4>
+            <p class="text-[11px] text-gray-500 leading-normal">Lantunan nagham tilawah bayyati dan nahawand syahdu oleh kader terbaik HIQMA.</p>
+          </div>
+        </div>
+
+        <!-- Video 2: Peraga Quran Isyarat -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm p-4 flex flex-col gap-4 reveal-hidden reveal-delay-1">
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/Ma9RpkL6ks0" title="Peraga Quran Isyarat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="px-2 space-y-1">
+            <span class="text-[9px] font-bold text-hiqma-gold uppercase tracking-widest">Seni Isyarat Al-Qur'an</span>
+            <h4 class="text-sm font-bold text-hiqma-navy leading-snug">Peraga Quran Isyarat pada Wisuda ke-137 UIN Jakarta</h4>
+            <p class="text-[11px] text-gray-500 leading-normal">Penampilan peragaan ayat suci Al-Qur'an menggunakan bahasa isyarat pertama di kampus.</p>
+          </div>
+        </div>
+
+        <!-- Video 3: Shalawat Badar -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm p-4 flex flex-col gap-4 reveal-hidden">
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/g3uTKEAehDE" title="Lantunan Merdu El-Hiqma Voice" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="px-2 space-y-1">
+            <span class="text-[9px] font-bold text-hiqma-gold uppercase tracking-widest">Seni Vokal Religi</span>
+            <h4 class="text-sm font-bold text-hiqma-navy leading-snug">Lantunan Merdu El-Hiqma Voice | Shalawat Badar</h4>
+            <p class="text-[11px] text-gray-500 leading-normal">Harmonisasi vokal grup akustik melantunkan shalawat nabi dengan nada menyentuh.</p>
+          </div>
+        </div>
+
+        <!-- Video 4: Injabartum -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm p-4 flex flex-col gap-4 reveal-hidden reveal-delay-1">
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/HMpfxhYJUkk" title="Injabartum, Karya Divisi Hadrah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="px-2 space-y-1">
+            <span class="text-[9px] font-bold text-hiqma-gold uppercase tracking-widest">Seni Musik Hadrah Klasik</span>
+            <h4 class="text-sm font-bold text-hiqma-navy leading-snug">Injabartum | Karya Divisi Hadrah | Cover Sholawat</h4>
+            <p class="text-[11px] text-gray-500 leading-normal">Kolaborasi tabuhan rebana klasik dan variasi vokal hadrah dari kader berprestasi.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SUBPAGE 2: FORMULIR PEMESANAN -->
+  <main id="booking-form-tab" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10 hidden">
     
     <!-- LEFT COLUMN: BOOKING GUIDE & INFO -->
-    <div class="lg:col-span-4 space-y-8">
+    <div class="lg:col-span-4 space-y-8 reveal-hidden">
       
       <!-- Steps Guide -->
       <div class="space-y-4">
@@ -151,7 +375,7 @@
     </div>
 
     <!-- RIGHT COLUMN: THE INTERACTIVE FORM -->
-    <div class="lg:col-span-8">
+    <div class="lg:col-span-8 reveal-hidden reveal-delay-1">
       <form id="booking-form" class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-8" onsubmit="handleFormSubmit(event)">
         
         <!-- Form Header -->
@@ -299,6 +523,21 @@
               </div>
             </label>
 
+            <!-- Item Lainnya (Others) -->
+            <label class="relative border border-gray-200 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-hiqma-navy transition-colors select-none">
+              <input type="checkbox" name="layanan" value="Lainnya" id="check-lainnya" class="sr-only" onchange="toggleSelectStyle(this); toggleLainnyaInput(this)">
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-hiqma-navy block">Others...</span>
+                <span class="text-[9px] text-gray-500 leading-normal block">Layanan / kombinasi khusus lainnya.</span>
+              </div>
+            </label>
+
+          </div>
+
+          <!-- Input Detail Lainnya (Hidden by default) -->
+          <div id="input-lainnya-container" class="hidden mt-4 transition-all duration-300">
+            <label for="layanan_lainnya" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Sebutkan Layanan Lainnya *</label>
+            <input type="text" id="layanan_lainnya" placeholder="Contoh: Pembacaan Puisi Islami, Kolaborasi Hadrah & Marawis, dll." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-hiqma-navy text-xs transition-colors bg-gray-50/50">
           </div>
         </div>
 
@@ -313,8 +552,8 @@
 
         <!-- Submit Button -->
         <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-end items-center gap-4">
-          <span class="text-[10px] text-gray-400 font-medium">Dengan menekan submit, Anda menyetujui kebijakan layanan HIQMA.</span>
-          <button type="submit" class="btn-gold px-8 py-3.5 rounded-2xl text-xs w-full sm:w-auto shadow-md">
+          <span class="text-[10px] text-gray-400 font-medium">Pengajuan akan disimpan di database & diteruskan ke WhatsApp.</span>
+          <button type="submit" id="submit-booking-btn" class="btn-gold px-8 py-3.5 rounded-2xl text-xs w-full sm:w-auto shadow-md">
             Kirim Pengajuan Booking
           </button>
         </div>
@@ -330,13 +569,7 @@
       
       <div class="md:col-span-5 space-y-4">
         <div class="flex items-center gap-3">
-          <svg class="h-10 w-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="4" />
-            <circle cx="50" cy="50" r="39" stroke="#D4AF37" stroke-width="1" stroke-dasharray="2 2" />
-            <path d="M35 30v40M47 30v40M58 30v40M68 30v40M35 50h33" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-            <circle cx="41" cy="62" r="3" fill="#FFFFFF" />
-            <circle cx="63" cy="62" r="3" fill="#FFFFFF" />
-          </svg>
+          <img class="h-12 w-auto bg-white/10 rounded-full p-1 border border-white/20" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
           <div>
             <h4 class="font-bold text-lg tracking-wide text-white leading-none">UKM HIQMA</h4>
             <span class="text-[10px] text-hiqma-gold font-bold tracking-widest">UIN SYARIF HIDAYATULLAH JAKARTA</span>
@@ -367,9 +600,20 @@
           Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
         </p>
         <div class="space-y-1 text-xs text-white/70">
-          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> +62 895-0306-6825</div>
           <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
-          <div><span class="text-hiqma-gold font-semibold">Website:</span> hiqmauinjkt.com</div>
+        </div>
+        <!-- Sosial Media Links -->
+        <div class="flex items-center gap-3 pt-2">
+          <a href="https://www.instagram.com/hiqma_uinjkt/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="Instagram">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@hiqma_uinjkt?lang=en" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="TikTok">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.57-3.99-1.53-.28-.25-.53-.53-.75-.83-.02 2.63-.04 5.26-.06 7.89-.04 1.48-.37 2.99-1.12 4.29-1.07 1.88-2.99 3.22-5.11 3.65-2.31.48-4.84.05-6.85-1.25-2.07-1.34-3.41-3.63-3.6-6.11-.27-3.37 1.91-6.72 5.17-7.6 1.05-.29 2.17-.33 3.25-.13V8.6c-1.32-.47-2.86-.15-3.87.82-1.07 1.04-1.41 2.7-1 4.14.36 1.25 1.41 2.29 2.68 2.58 1.12.26 2.37-.08 3.16-.9.84-.87 1.11-2.19 1.08-3.4-.02-3.95-.01-7.91-.03-11.82z"/></svg>
+          </a>
+          <a href="https://x.com/hiqmauinjkt" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="X (Twitter)">
+            <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </div>
 
@@ -390,6 +634,74 @@
       menu.classList.toggle('hidden');
     });
 
+    // Tab switcher logic
+    function switchBookingTab(tabName) {
+      const tabDokumentasi = document.getElementById('booking-dokumentasi-tab');
+      const tabForm = document.getElementById('booking-form-tab');
+      const btnDokumentasi = document.getElementById('tab-btn-dokumentasi');
+      const btnForm = document.getElementById('tab-btn-form');
+
+      if (tabName === 'dokumentasi') {
+        tabDokumentasi.classList.remove('hidden');
+        tabDokumentasi.classList.add('block');
+        tabForm.classList.remove('block');
+        tabForm.classList.add('hidden');
+
+        btnDokumentasi.className = 'px-6 py-3 font-bold text-sm text-hiqma-navy border-b-2 border-hiqma-gold transition-all duration-300';
+        btnForm.className = 'px-6 py-3 font-semibold text-sm text-gray-500 hover:text-hiqma-navy border-b-2 border-transparent transition-all duration-300';
+      } else {
+        tabForm.classList.remove('hidden');
+        tabForm.classList.add('block');
+        tabDokumentasi.classList.remove('block');
+        tabDokumentasi.classList.add('hidden');
+
+        btnForm.className = 'px-6 py-3 font-bold text-sm text-hiqma-navy border-b-2 border-hiqma-gold transition-all duration-300';
+        btnDokumentasi.className = 'px-6 py-3 font-semibold text-sm text-gray-500 hover:text-hiqma-navy border-b-2 border-transparent transition-all duration-300';
+      }
+    }
+
+    // Direct booking call from portfolio cards
+    function pesanTalent(talentValue) {
+      // 1. Switch to form tab
+      switchBookingTab('form');
+
+      // 2. Uncheck all other options first to ensure clear selection (optional, but good UX)
+      document.querySelectorAll('input[name="layanan"]').forEach(cb => {
+        cb.checked = false;
+        toggleSelectStyle(cb);
+      });
+
+      // 3. Find and check the target checkbox
+      const targetCheckbox = Array.from(document.querySelectorAll('input[name="layanan"]'))
+        .find(cb => cb.value.toLowerCase().includes(talentValue.toLowerCase()) || talentValue.toLowerCase().includes(cb.value.toLowerCase()));
+
+      if (targetCheckbox) {
+        targetCheckbox.checked = true;
+        toggleSelectStyle(targetCheckbox);
+        if (targetCheckbox.value === 'Lainnya') {
+          toggleLainnyaInput(targetCheckbox);
+        }
+      }
+
+      // 4. Smooth scroll to form
+      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toggle custom service input field
+    function toggleLainnyaInput(checkbox) {
+      const container = document.getElementById('input-lainnya-container');
+      const input = document.getElementById('layanan_lainnya');
+      if (checkbox.checked) {
+        container.classList.remove('hidden');
+        input.setAttribute('required', 'true');
+        input.focus();
+      } else {
+        container.classList.add('hidden');
+        input.removeAttribute('required');
+        input.value = '';
+      }
+    }
+
     // Style toggle helper for checkbox-based card selections
     function toggleSelectStyle(checkbox) {
       const parentLabel = checkbox.closest('label');
@@ -402,14 +714,26 @@
       }
     }
 
-    // Submit handler
+    // Submit handler with WhatsApp redirection
     function handleFormSubmit(event) {
       event.preventDefault();
       
       // Collect selected talents
       const selectedTalents = [];
+      let hasLainnya = false;
+      
       document.querySelectorAll('input[name="layanan"]:checked').forEach(cb => {
-        selectedTalents.push(cb.value);
+        if (cb.value === 'Lainnya') {
+          hasLainnya = true;
+          const detailLainnya = document.getElementById('layanan_lainnya').value.trim();
+          if (detailLainnya) {
+            selectedTalents.push(`Lainnya (${detailLainnya})`);
+          } else {
+            selectedTalents.push('Lainnya');
+          }
+        } else {
+          selectedTalents.push(cb.value);
+        }
       });
 
       if (selectedTalents.length === 0) {
@@ -418,30 +742,132 @@
       }
 
       // Gather input data
-      const data = {
-        nama_pemohon: document.getElementById('nama_pemohon').value,
-        instansi: document.getElementById('instansi').value,
-        kontak: document.getElementById('kontak').value,
-        email: document.getElementById('email').value,
-        nama_acara: document.getElementById('nama_acara').value,
-        tanggal_acara: document.getElementById('tanggal_acara').value,
-        lokasi: document.getElementById('lokasi').value,
-        layanan: selectedTalents,
-        catatan: document.getElementById('catatan').value
+      const nama = document.getElementById('nama_pemohon').value;
+      const instansi = document.getElementById('instansi').value || '-';
+      const kontak = document.getElementById('kontak').value;
+      const email = document.getElementById('email').value;
+      const namaAcara = document.getElementById('nama_acara').value;
+      const tanggal = document.getElementById('tanggal_acara').value;
+      const lokasi = document.getElementById('lokasi').value;
+      const catatan = document.getElementById('catatan').value || '-';
+      const detailLainnyaText = document.getElementById('layanan_lainnya').value.trim();
+
+      // Collect raw chosen services for backend
+      const rawLayanan = [];
+      document.querySelectorAll('input[name="layanan"]:checked').forEach(cb => {
+        rawLayanan.push(cb.value);
+      });
+
+      // Show loading state
+      const submitBtn = document.getElementById('submit-booking-btn');
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Memproses...
+      `;
+
+      // API POST request payload
+      const payload = {
+        nama_pemohon: nama,
+        instansi: instansi !== '-' ? instansi : null,
+        kontak: kontak,
+        email: email || null,
+        nama_acara: namaAcara,
+        tanggal_acara: tanggal,
+        lokasi: lokasi,
+        catatan: catatan !== '-' ? catatan : null,
+        layanan: rawLayanan,
+        layanan_lainnya: detailLainnyaText || null
       };
 
-      console.log("Form submission data:", data);
+      fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(resData => {
+        if (resData.status === 'success') {
+          const noBooking = resData.data.no_booking;
 
-      // Temporary visual notification since backend is not connected yet
-      alert(`Terima kasih, ${data.nama_pemohon}! Pengajuan booking untuk acara "${data.nama_acara}" telah disimpan di sistem frontend. Pengintegrasian API backend akan diselesaikan pada Fase 4.`);
-      
-      // Reset form
-      document.getElementById('booking-form').reset();
-      document.querySelectorAll('#talent-selection-grid label').forEach(label => {
-        label.classList.remove('border-hiqma-gold', 'bg-hiqma-navy/5', 'shadow-inner');
-        label.classList.add('border-gray-200');
+          // Format WhatsApp message including the official Booking Number
+          const lineSeparator = "========================";
+          const waMessage = 
+`*PENGAJUAN BOOKING TALENT HIQMA*
+${lineSeparator}
+
+*Nomor Booking Resmi:* ${noBooking}
+
+*1. Informasi Pemohon:*
+• Nama: ${nama}
+• Instansi: ${instansi}
+• No. WhatsApp/HP: ${kontak}
+• Email: ${email}
+
+*2. Detail Acara & Pelaksanaan:*
+• Nama Acara: ${namaAcara}
+• Tanggal Acara: ${tanggal}
+• Lokasi: ${lokasi}
+
+*3. Layanan Talent yang Dipilih:*
+${selectedTalents.map(t => `• ${t}`).join("\n")}
+
+*4. Catatan Tambahan:*
+${catatan}
+
+${lineSeparator}
+_Dikirim via Formulir Booking Website Resmi HIQMA UIN Jakarta_`;
+
+          // WhatsApp URL targeting user's test phone number
+          const testPhoneNumber = "6285808678391";
+          const waUrl = `https://wa.me/${testPhoneNumber}?text=${encodeURIComponent(waMessage)}`;
+
+          // Open WhatsApp link in new window/tab
+          window.open(waUrl, '_blank');
+
+          // Reset form
+          document.getElementById('booking-form').reset();
+          document.querySelectorAll('#talent-selection-grid label').forEach(label => {
+            label.classList.remove('border-hiqma-gold', 'bg-hiqma-navy/5', 'shadow-inner');
+            label.classList.add('border-gray-200');
+          });
+          // Hide and clean others input if visible
+          document.getElementById('input-lainnya-container').classList.add('hidden');
+          document.getElementById('layanan_lainnya').removeAttribute('required');
+        } else {
+          alert("Gagal memproses pengajuan booking: " + resData.message);
+        }
+      })
+      .catch(err => {
+        console.error("Error creating booking:", err);
+        alert("Terjadi kesalahan sistem saat mengirim pengajuan booking.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
       });
     }
+
+    // Scroll Reveal Animation using Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal-hidden');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    revealElements.forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

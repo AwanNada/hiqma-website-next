@@ -63,18 +63,13 @@
         <nav class="hidden md:flex items-center gap-8">
           <a href="/" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Beranda</a>
           <a href="/profil" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Profil</a>
+          <a href="/prestasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Prestasi</a>
           <a href="/publikasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Publikasi & Galeri</a>
           <a href="/booking" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Booking Talent</a>
         </nav>
 
         <!-- Right Buttons -->
         <div class="flex items-center gap-4">
-          <a href="/booking" class="btn-gold px-5 py-2.5 rounded-xl text-sm shadow-sm hidden lg:block">
-            Pesan Layanan
-          </a>
-          <a href="/login" class="btn-outline-blue px-5 py-2.5 rounded-xl text-sm transition-all">
-            Login Anggota
-          </a>
           <!-- Mobile Menu Button -->
           <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,9 +85,9 @@
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
       <a href="/" class="block text-hiqma-navy font-bold py-2">Beranda</a>
       <a href="/profil" class="block text-gray-700 font-medium py-2">Profil</a>
+      <a href="/prestasi" class="block text-gray-700 font-medium py-2">Prestasi</a>
       <a href="/publikasi" class="block text-gray-700 font-medium py-2">Publikasi & Galeri</a>
       <a href="/booking" class="block text-gray-700 font-medium py-2">Booking Talent</a>
-      <a href="/booking" class="block text-center btn-gold py-2.5 rounded-xl text-sm mt-4">Pesan Layanan</a>
     </div>
   </header>
 
@@ -215,9 +210,7 @@
         <!-- Card 4: Mitra -->
         <div class="paper-card p-8 text-center flex flex-col items-center justify-between space-y-4 bg-white reveal-hidden reveal-delay-4">
           <div class="h-16 w-16 rounded-full bg-hiqma-navy/5 text-hiqma-navy flex items-center justify-center shadow-sm">
-            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+            <img class="h-10 w-10 object-contain" src="Images/Instansi.png" alt="Mitra">
           </div>
           <div class="space-y-1">
             <h4 class="text-4xl font-extrabold text-hiqma-navy">40+</h4>
@@ -229,9 +222,7 @@
         <!-- Card 5: Alumni -->
         <div class="paper-card p-8 text-center flex flex-col items-center justify-between space-y-4 bg-white reveal-hidden reveal-delay-5">
           <div class="h-16 w-16 rounded-full bg-hiqma-navy/5 text-hiqma-navy flex items-center justify-center shadow-sm">
-            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-            </svg>
+            <img class="h-10 w-10 object-contain" src="Images/alumni.png" alt="Alumni">
           </div>
           <div class="space-y-1">
             <h4 class="text-4xl font-extrabold text-hiqma-navy">1200+</h4>
@@ -243,9 +234,7 @@
         <!-- Card 6: Program -->
         <div class="paper-card p-8 text-center flex flex-col items-center justify-between space-y-4 bg-white reveal-hidden reveal-delay-6">
           <div class="h-16 w-16 rounded-full bg-hiqma-navy/5 text-hiqma-navy flex items-center justify-center shadow-sm">
-            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+            <img class="h-10 w-10 object-contain" src="Images/Pendidikan.png" alt="Program">
           </div>
           <div class="space-y-1">
             <h4 class="text-4xl font-extrabold text-hiqma-navy">15+</h4>
@@ -283,6 +272,108 @@
   </section>
 
   <!-- ==========================================
+       SECTION: HIGHLIGHT PRESTASI
+       ========================================== -->
+  <section class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-hidden">
+        <div class="space-y-2">
+          <h2 class="text-xs font-bold text-hiqma-gold uppercase tracking-widest">Rekam Jejak Gemilang</h2>
+          <h3 class="text-3xl font-extrabold text-hiqma-navy gold-border-bottom">Prestasi</h3>
+        </div>
+        <a href="/prestasi" class="text-hiqma-navy hover:text-hiqma-gold font-bold text-sm flex items-center gap-1 group">
+          Lihat Semua Prestasi
+          <svg class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <!-- Mini stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal-hidden">
+        <div class="bg-hiqma-navy text-white rounded-2xl p-5 text-center shadow-sm">
+          <div class="text-3xl font-extrabold text-hiqma-gold">3</div>
+          <div class="text-xs font-semibold text-white/70 mt-1 uppercase tracking-wider">Internasional<br><span class="text-[10px]">Tingkat ASEAN</span></div>
+        </div>
+        <div class="paper-card p-5 text-center">
+          <div class="text-3xl font-extrabold text-hiqma-navy">100+</div>
+          <div class="text-xs font-semibold text-gray-500 mt-1 uppercase tracking-wider">Prestasi<br><span class="text-[10px]">Nasional & Regional</span></div>
+        </div>
+        <div class="paper-card p-5 text-center">
+          <div class="text-3xl font-extrabold text-hiqma-navy">10+</div>
+          <div class="text-xs font-semibold text-gray-500 mt-1 uppercase tracking-wider">Kategori<br><span class="text-[10px]">MTQ, MSQ, Da'i, dll.</span></div>
+        </div>
+        <div class="paper-card p-5 text-center">
+          <div class="text-3xl font-extrabold text-hiqma-navy">6</div>
+          <div class="text-xs font-semibold text-gray-500 mt-1 uppercase tracking-wider">Tahun<br><span class="text-[10px]">Berturut-turut</span></div>
+        </div>
+      </div>
+
+      <!-- 3 Featured Trophy Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: ASEAN International -->
+        <div class="paper-card overflow-hidden flex flex-col reveal-hidden reveal-delay-1">
+          <div style="background:linear-gradient(135deg,#4c1d95,#1e1b4b)" class="px-5 py-5 flex items-center gap-3">
+            <span class="text-4xl">🌍</span>
+            <div>
+              <div class="text-yellow-300 font-extrabold text-sm">Juara 3 — Internasional</div>
+              <div class="text-purple-200 text-xs font-semibold">MTQ Tingkat ASEAN</div>
+            </div>
+          </div>
+          <div class="p-5 flex-grow">
+            <p class="text-hiqma-navy font-bold text-sm leading-snug">Ihtifal Malaysia — Tingkat ASEAN</p>
+            <p class="text-gray-400 text-xs mt-1">Kader HIQMA menorehkan nama di pentas internasional dalam Musabaqah Tilawatil Qur'an tingkat ASEAN.</p>
+          </div>
+          <div class="px-5 pb-4 flex justify-between items-center border-t border-gray-50 pt-3">
+            <span class="text-xs text-gray-400 font-bold">2017</span>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">Internasional</span>
+          </div>
+        </div>
+
+        <!-- Card 2: National Juara 1 MTQ -->
+        <div class="paper-card overflow-hidden flex flex-col reveal-hidden reveal-delay-2">
+          <div style="background:linear-gradient(135deg,#fef9c3,#fde68a,#f59e0b)" class="px-5 py-5 flex items-center gap-3">
+            <span class="text-4xl">🥇</span>
+            <div>
+              <div class="text-yellow-900 font-extrabold text-sm">Juara 1 — Nasional</div>
+              <div class="text-yellow-800 opacity-80 text-xs font-semibold">Musabaqah Syarhil Qur'an</div>
+            </div>
+          </div>
+          <div class="p-5 flex-grow">
+            <p class="text-hiqma-navy font-bold text-sm leading-snug">Festival HAWASI Al-Qur'an UII</p>
+            <p class="text-gray-400 text-xs mt-1">Delegasi Syarhil Qur'an HIQMA tampil memukau di ajang festival Al-Qur'an tingkat nasional.</p>
+          </div>
+          <div class="px-5 pb-4 flex justify-between items-center border-t border-gray-50 pt-3">
+            <span class="text-xs text-gray-400 font-bold">2021</span>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-50 text-red-600 border-red-100">Nasional</span>
+          </div>
+        </div>
+
+        <!-- Card 3: MTQ National 2022 -->
+        <div class="paper-card overflow-hidden flex flex-col reveal-hidden reveal-delay-3">
+          <div style="background:linear-gradient(135deg,#fef9c3,#fde68a,#f59e0b)" class="px-5 py-5 flex items-center gap-3">
+            <span class="text-4xl">🥇</span>
+            <div>
+              <div class="text-yellow-900 font-extrabold text-sm">Juara 1 — Nasional</div>
+              <div class="text-yellow-800 opacity-80 text-xs font-semibold">MTQ Putra PESONA I PTKIN</div>
+            </div>
+          </div>
+          <div class="p-5 flex-grow">
+            <p class="text-hiqma-navy font-bold text-sm leading-snug">UIN Sunan Gunung Djati Bandung</p>
+            <p class="text-gray-400 text-xs mt-1">Kader terbaik Tilawah merebut juara satu tingkat nasional di ajang PESONA I PTKIN antar kampus Islam.</p>
+          </div>
+          <div class="px-5 pb-4 flex justify-between items-center border-t border-gray-50 pt-3">
+            <span class="text-xs text-gray-400 font-bold">2022</span>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-50 text-red-600 border-red-100">Nasional</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
        SECTION: LATEST PUBLICATIONS
        ========================================== -->
   <section class="skew-bg-right py-24 my-12 relative z-10">
@@ -300,161 +391,12 @@
       </div>
 
       <!-- Articles Grid (Auto wraps to 3 columns per row, creating 2 rows) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Article 1 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-1">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Pengumuman</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Pelantikan Pengurus Baru HIQMA UIN Jakarta Kabinet Ashfiya Bakti 2026</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                Pelantikan kepengurusan baru berlangsung dengan khidmat di Student Center UIN Jakarta. Kepengurusan resmi disahkan dengan mengusung spirit perubahan dan pemasyarakatan Al-Qur'an.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>25 Januari 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-2">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Prestasi</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Qari Delegasi HIQMA Raih Juara 1 MTQ Mahasiswa Tingkat Regional</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                Kader terbaik divisi Tilawah kembali membanggakan nama almamater dengan menyabet gelar qari terbaik dalam ajang kompetisi seni Al-Qur'an antar perguruan tinggi.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>18 Februari 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Media Officer</span>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-3">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Kegiatan</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Safari Ramadhan 1447 H: Tebar Keberkahan dengan Tasmi' Al-Qur'an</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                HIQMA sukses merampungkan rangkaian Safari Ramadhan dengan mengadakan pengajian umum, bakti sosial, serta penampilan tim seni islami di wilayah Jabodetabek.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>22 Maret 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
-          </div>
-        </article>
-
-        <!-- Article 4 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-1">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Artikel</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Pentingnya Manajemen Organisasi bagi Mahasiswa di Era Modern</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                Menyeimbangkan kesibukan perkuliahan dengan tanggung jawab kepengurusan di UKM keagamaan melatih kedisiplinan dan jiwa kepemimpinan yang tangguh.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>05 April 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Litbang</span>
-          </div>
-        </article>
-
-        <!-- Article 5 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-2">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Kegiatan</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Latihan Gabungan Kaligrafi dan Kajian Khat Arab Bersama Senior</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                Divisi Kaligrafi menggelar workshop dan bedah karya seni lukis khat arab guna memperdalam estetika penulisan kaligrafi bagi seluruh anggota baru.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>12 Mei 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Media Officer</span>
-          </div>
-        </article>
-
-        <!-- Article 6 -->
-        <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-delay-3">
-          <div>
-            <div class="h-48 bg-gray-200 relative overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-hiqma-navy/60 to-transparent z-10"></div>
-              <div class="absolute inset-0 bg-hiqma-navy/10 flex items-center justify-center font-bold text-white tracking-widest text-xs uppercase z-20 bg-islamic-dark">
-                HIQMA NEWS
-              </div>
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">Pengumuman</span>
-              <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
-                <a href="/publikasi">Pembukaan Pendaftaran Calon Anggota Baru (TRIK) HIQMA 2026</a>
-              </h4>
-              <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                Bagi mahasiswa aktif UIN Syarif Hidayatullah Jakarta yang berminat mendalami seni Al-Qur'an dan berorganisasi, pendaftaran resmi kembali dibuka.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-            <span>01 Juni 2026</span>
-            <span class="font-semibold text-hiqma-navy">Oleh: Pendidikan & Kaderisasi</span>
-          </div>
-        </article>
-
+      <div id="latest-articles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="col-span-3 text-center py-12 text-gray-400">
+          Sedang memuat publikasi terbaru...
+        </div>
       </div>
     </div>
-  </section>
   </section>
 
   <!-- ==========================================
@@ -499,9 +441,20 @@
           Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten, Indonesia 15412
         </p>
         <div class="space-y-1 text-xs text-white/70">
-          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> 089503066825</div>
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> +62 895-0306-6825</div>
           <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
-          <div><span class="text-hiqma-gold font-semibold">Website:</span> hiqmauinjkt.com</div>
+        </div>
+        <!-- Sosial Media Links -->
+        <div class="flex items-center gap-3 pt-2">
+          <a href="https://www.instagram.com/hiqma_uinjkt/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="Instagram">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@hiqma_uinjkt?lang=en" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="TikTok">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.57-3.99-1.53-.28-.25-.53-.53-.75-.83-.02 2.63-.04 5.26-.06 7.89-.04 1.48-.37 2.99-1.12 4.29-1.07 1.88-2.99 3.22-5.11 3.65-2.31.48-4.84.05-6.85-1.25-2.07-1.34-3.41-3.63-3.6-6.11-.27-3.37 1.91-6.72 5.17-7.6 1.05-.29 2.17-.33 3.25-.13V8.6c-1.32-.47-2.86-.15-3.87.82-1.07 1.04-1.41 2.7-1 4.14.36 1.25 1.41 2.29 2.68 2.58 1.12.26 2.37-.08 3.16-.9.84-.87 1.11-2.19 1.08-3.4-.02-3.95-.01-7.91-.03-11.82z"/></svg>
+          </a>
+          <a href="https://x.com/hiqmauinjkt" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="X (Twitter)">
+            <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </div>
 
@@ -549,6 +502,82 @@
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Fetch and Render Latest 3 Articles from Database
+    async function loadLatestArticles() {
+      const grid = document.getElementById('latest-articles-grid');
+      try {
+        const response = await fetch('/api/publikasi');
+        if (!response.ok) throw new Error('Gagal mengambil data publikasi');
+        const resData = await response.json();
+        
+        if (resData.status !== 'success' || !Array.isArray(resData.data)) {
+          throw new Error('Format data tidak valid');
+        }
+
+        const publishedArticles = resData.data;
+        
+        if (publishedArticles.length === 0) {
+          grid.innerHTML = '<div class="col-span-3 text-center py-12 text-gray-400">Belum ada artikel publikasi terbaru.</div>';
+          return;
+        }
+
+        // Take only top 3
+        const latestThree = publishedArticles.slice(0, 3);
+        
+        let html = '';
+        latestThree.forEach((art) => {
+          // Format date helper
+          const dateStr = new Date(art.created_at).toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+
+          // Determine cover image
+          const thumbnail = art.thumbnail || '/Images/Logo-Hiqma-uinjkt.png';
+          const coverImg = `<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" src="${thumbnail}" alt="${art.judul}">`;
+            
+          // Strip HTML tags for clean body excerpt
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = art.isi;
+          const plainText = tempDiv.textContent || tempDiv.innerText || "";
+          
+          html += `
+            <article class="paper-card overflow-hidden flex flex-col justify-between reveal-hidden reveal-visible">
+              <div>
+                <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center border-b border-gray-100">
+                  <a href="/publikasi/detail/${art.id_publikasi}" class="h-full w-full block">
+                    ${coverImg}
+                  </a>
+                </div>
+                <div class="p-6 space-y-3">
+                  <span class="text-[10px] font-bold text-hiqma-gold uppercase tracking-widest">${art.kategori || 'Berita'}</span>
+                  <h4 class="text-base font-bold text-hiqma-navy hover:text-hiqma-gold transition-colors">
+                    <a href="/publikasi/detail/${art.id_publikasi}">${art.judul}</a>
+                  </h4>
+                  <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                    ${plainText}
+                  </p>
+                </div>
+              </div>
+              <div class="px-6 pb-6 pt-4 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
+                <span>${dateStr}</span>
+                <span class="font-semibold text-hiqma-navy">Oleh: Humas</span>
+              </div>
+            </article>
+          `;
+        });
+        
+        grid.innerHTML = html;
+      } catch (err) {
+        console.error(err);
+        grid.innerHTML = '<div class="col-span-3 text-center py-12 text-red-500">Gagal memuat artikel terbaru.</div>';
+      }
+    }
+
+    // Call on load
+    document.addEventListener('DOMContentLoaded', loadLatestArticles);
   </script>
 </body>
 </html>

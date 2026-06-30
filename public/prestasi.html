@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestasi & Penghargaan | UKM HIQMA UIN Syarif Hidayatullah Jakarta</title>
+  <meta name="description" content="Rekam jejak prestasi gemilang UKM HIQMA UIN Jakarta dari tingkat kota hingga internasional dalam berbagai cabang seni dan musabaqah Al-Qur'an.">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hiqma: {
+              navy: '#0F2D59',
+              navyLight: '#163e75',
+              gold: '#D4AF37',
+              goldHover: '#B89324',
+              cream: '#F9F8F6'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .trophy-gold { background: linear-gradient(135deg, #fef9c3 0%, #fde68a 50%, #f59e0b 100%); }
+    .trophy-silver { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #94a3b8 100%); }
+    .trophy-bronze { background: linear-gradient(135deg, #fef3c7 0%, #fcd9bd 50%, #c2763a 100%); }
+    .trophy-hope { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #6495d4 100%); }
+    .trophy-fav { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #22c55e 100%); }
+
+    .award-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .award-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,45,89,0.12);
+    }
+
+    .filter-btn {
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active {
+      background-color: #0F2D59;
+      color: white;
+      border-color: #0F2D59;
+    }
+
+    .year-tag {
+      scroll-margin-top: 100px;
+    }
+
+    .intl-banner {
+      background: linear-gradient(135deg, #0F2D59 0%, #163e75 60%, #1e4f9c 100%);
+    }
+  </style>
+</head>
+<body class="bg-hiqma-cream min-h-screen flex flex-col font-sans">
+
+  <!-- ==========================================
+       NAVBAR / HEADER
+       ========================================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-hiqma-navy/5 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Section -->
+        <a href="/" class="flex items-center gap-3">
+          <div class="flex items-center">
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-UinJkt.png" alt="Logo UIN Jakarta">
+          </div>
+          <div class="flex items-center border-l border-gray-300 pl-3">
+            <img class="h-10 w-10 object-contain" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          </div>
+          <div class="flex items-center border-l border-gray-300 pl-3 hidden sm:flex">
+            <img class="h-10 w-10 rounded-full object-cover border border-gray-200 shadow-sm" src="/Images/Logo-kabinet-ashfiya.png" alt="Logo Kabinet Ashfiya">
+            <div class="ml-2 flex flex-col justify-center">
+              <span class="text-xs font-bold text-hiqma-navy leading-none">KABINET</span>
+              <span class="text-xs font-extrabold text-hiqma-gold tracking-widest leading-none">ASHFIYA</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Beranda</a>
+          <a href="/profil" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Profil</a>
+          <a href="/prestasi" class="text-hiqma-navy font-semibold hover:text-hiqma-gold transition-colors gold-border-bottom">Prestasi</a>
+          <a href="/publikasi" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Publikasi & Galeri</a>
+          <a href="/booking" class="text-gray-600 font-medium hover:text-hiqma-navy transition-colors">Booking Talent</a>
+        </nav>
+
+        <!-- Right Buttons -->
+        <div class="flex items-center gap-4">
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-hiqma-navy hover:bg-gray-100 rounded-lg">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3 shadow-inner">
+      <a href="/" class="block text-gray-700 font-medium py-2">Beranda</a>
+      <a href="/profil" class="block text-gray-700 font-medium py-2">Profil</a>
+      <a href="/prestasi" class="block text-hiqma-navy font-bold py-2">Prestasi</a>
+      <a href="/publikasi" class="block text-gray-700 font-medium py-2">Publikasi & Galeri</a>
+      <a href="/booking" class="block text-gray-700 font-medium py-2">Booking Talent</a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <section class="bg-islamic-dark relative overflow-hidden py-20 md:py-28">
+    <!-- Decorative Rings -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-hiqma-gold/10 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-hiqma-gold/10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6 reveal-hidden">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-hiqma-gold/15 border border-hiqma-gold/30 text-hiqma-gold text-xs font-bold uppercase tracking-widest">
+        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Rekam Jejak Gemilang
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
+        Hall of <span class="text-hiqma-gold font-serif italic font-normal">Prestasi</span>
+      </h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+        Perjalanan panjang kader-kader HIQMA menorehkan nama dalam berbagai kompetisi seni Al-Qur'an, dari tingkat kota hingga pentas ASEAN Internasional.
+      </p>
+
+      <!-- Stats Row -->
+      <div class="flex flex-wrap justify-center gap-6 pt-4">
+        <div class="flex flex-col items-center px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <span class="text-3xl font-extrabold text-hiqma-gold">3</span>
+          <span class="text-white/60 text-xs font-semibold mt-1 uppercase tracking-wider">Internasional</span>
+        </div>
+        <div class="flex flex-col items-center px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <span class="text-3xl font-extrabold text-hiqma-gold">100+</span>
+          <span class="text-white/60 text-xs font-semibold mt-1 uppercase tracking-wider">Nasional & Regional</span>
+        </div>
+        <div class="flex flex-col items-center px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <span class="text-3xl font-extrabold text-hiqma-gold">10+</span>
+          <span class="text-white/60 text-xs font-semibold mt-1 uppercase tracking-wider">Kategori Lomba</span>
+        </div>
+        <div class="flex flex-col items-center px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <span class="text-3xl font-extrabold text-hiqma-gold">6</span>
+          <span class="text-white/60 text-xs font-semibold mt-1 uppercase tracking-wider">Tahun Berturut-turut</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FILTER BAR + AWARDS GRID
+       ========================================== -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full space-y-10">
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-3 items-center justify-center reveal-hidden reveal-delay-1">
+      <button onclick="filterAwards('semua')" id="filter-semua" class="filter-btn active px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">Semua</button>
+      <button onclick="filterAwards('Internasional')" id="filter-Internasional" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🌍 Internasional</button>
+      <button onclick="filterAwards('Nasional')" id="filter-Nasional" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🏆 Nasional</button>
+      <button onclick="filterAwards('Jawa-Madura')" id="filter-Jawa-Madura" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">📍 Jawa-Madura</button>
+      <button onclick="filterAwards('Jabodetabek')" id="filter-Jabodetabek" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🏙️ Jabodetabek</button>
+      <button onclick="filterAwards('Provinsi')" id="filter-Provinsi" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🗺️ Provinsi</button>
+      <button onclick="filterAwards('Kota')" id="filter-Kota" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🏅 Kota</button>
+      <button onclick="filterAwards('Mahasiswa')" id="filter-Mahasiswa" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">🎓 Mahasiswa</button>
+      <button onclick="filterAwards('Umum')" id="filter-Umum" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold border border-gray-200 bg-white text-gray-600">👥 Umum</button>
+    </div>
+
+    <!-- Result Count -->
+    <div class="text-center">
+      <span id="result-count" class="text-xs font-semibold text-gray-400"></span>
+    </div>
+
+    <!-- Awards Grid -->
+    <div id="awards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamically rendered by JS -->
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="bg-islamic-dark text-white pt-16 pb-8 border-t border-hiqma-gold/25 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+      
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <img class="h-10 w-10 object-contain" src="/Images/Logo-Hiqma-uinjkt.png" alt="Logo HIQMA">
+          <div>
+            <h4 class="font-bold text-lg tracking-wide text-white leading-none">UKM HIQMA</h4>
+            <span class="text-[10px] text-hiqma-gold font-bold tracking-widest">UIN SYARIF HIDAYATULLAH JAKARTA</span>
+          </div>
+        </div>
+        <p class="text-white/60 text-xs leading-relaxed max-w-sm">
+          Unit Kegiatan Mahasiswa pembinaan minat bakat seni Al-Qur'an dan organisasi di bawah naungan Wakil Rektor Kemahasiswaan UIN Jakarta.
+        </p>
+        <div class="text-xs text-hiqma-gold font-semibold italic">"Damai bersama Al-Qur'an"</div>
+      </div>
+
+      <div class="md:col-span-3 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Tautan Pintas</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Sejarah & Visi Misi</a></li>
+          <li><a href="/profil" class="hover:text-hiqma-gold transition-colors">Struktur Kepengurusan</a></li>
+          <li><a href="/prestasi" class="hover:text-hiqma-gold transition-colors">Prestasi & Penghargaan</a></li>
+          <li><a href="/publikasi" class="hover:text-hiqma-gold transition-colors">Berita & Publikasi</a></li>
+          <li><a href="/booking" class="hover:text-hiqma-gold transition-colors">Layanan Talent Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-4">
+        <h4 class="font-bold text-sm text-hiqma-gold tracking-wider uppercase">Sekretariat</h4>
+        <p class="text-white/70 text-xs leading-relaxed">
+          Gedung Student Center Lt. 3, UIN Syarif Hidayatullah Jakarta<br>
+          Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan, Banten 15412
+        </p>
+        <div class="space-y-1 text-xs text-white/70">
+          <div><span class="text-hiqma-gold font-semibold">Telepon:</span> +62 895-0306-6825</div>
+          <div><span class="text-hiqma-gold font-semibold">Email:</span> hiqma@uinjkt.ac.id</div>
+        </div>
+        <!-- Sosial Media Links -->
+        <div class="flex items-center gap-3 pt-2">
+          <a href="https://www.instagram.com/hiqma_uinjkt/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="Instagram">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@hiqma_uinjkt?lang=en" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="TikTok">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.57-3.99-1.53-.28-.25-.53-.53-.75-.83-.02 2.63-.04 5.26-.06 7.89-.04 1.48-.37 2.99-1.12 4.29-1.07 1.88-2.99 3.22-5.11 3.65-2.31.48-4.84.05-6.85-1.25-2.07-1.34-3.41-3.63-3.6-6.11-.27-3.37 1.91-6.72 5.17-7.6 1.05-.29 2.17-.33 3.25-.13V8.6c-1.32-.47-2.86-.15-3.87.82-1.07 1.04-1.41 2.7-1 4.14.36 1.25 1.41 2.29 2.68 2.58 1.12.26 2.37-.08 3.16-.9.84-.87 1.11-2.19 1.08-3.4-.02-3.95-.01-7.91-.03-11.82z"/></svg>
+          </a>
+          <a href="https://x.com/hiqmauinjkt" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-hiqma-gold transition-colors" title="X (Twitter)">
+            <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
+      <span>&copy; 2026 UKM HIQMA UIN Syarif Hidayatullah Jakarta. Hak Cipta Dilindungi.</span>
+      <span>Kabinet Ashfiya 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // ==========================================
+    // ACHIEVEMENT DATA
+    // ==========================================
+    const awards = [
+      // --- INTERNASIONAL ---
+      { juara: 'Juara 3', kategori: 'MTQ Putri', event: 'Ihtifal Malaysia', tahun: 2017, tingkat: 'Internasional' },
+      { juara: 'Juara 3', kategori: 'MTQ Putra', event: 'Ihtifal Malaysia', tahun: 2017, tingkat: 'Internasional' },
+      { juara: 'Juara 3', kategori: 'Lirik Terbaik', event: 'Ihtifal Malaysia', tahun: 2017, tingkat: 'Internasional' },
+
+      // --- 2020 NASIONAL ---
+      { juara: 'Juara 3', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'Gebyar Brawijaya Qurani Nasional VII', tahun: 2020, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'Cover Sholawat', event: 'Universitas Negeri Sebelas Maret', tahun: 2020, tingkat: 'Nasional' },
+
+      // --- 2021 ---
+      { juara: 'Juara 1', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'Ramadhan Fair KPI UIN Jakarta', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'Ramadhan Fair KPI UIN Jakarta', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 1', kategori: 'Pidato Bahasa Indonesia', event: 'Ramadhan Fair KPI UIN Jakarta', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'Solo Vocal', event: 'Ramadhan Fair KPI UIN Jakarta', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 1', kategori: 'Sari Tilawah', event: 'GESIDAR', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 1', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'MUFI Ma\'had UIN Malang', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'MTQ Putra', event: 'IPPBMM VIII UIN Sunan Kalijaga Yogyakarta', tahun: 2021, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 3', kategori: 'MTQ Putri', event: 'IPPBMM VIII UIN Sunan Kalijaga Yogyakarta', tahun: 2021, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 2', kategori: 'Da\'iyah', event: 'IPPBMM VIII UIN Sunan Kalijaga Yogyakarta', tahun: 2021, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Fahmil Qur\'an (MFQ)', event: 'IPPBMM VIII UIN Sunan Kalijaga Yogyakarta', tahun: 2021, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 3', kategori: 'Tilawah MTQ', event: 'Universitas Pamulang', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Juara 1', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'Festival HAWASI Al-Qur\'an UII', tahun: 2021, tingkat: 'Nasional' },
+      { juara: 'Harapan 3', kategori: 'Hadrah', event: 'Festival Banjari Putra RIFARA', tahun: 2021, tingkat: 'Nasional' },
+
+      // --- 2022 ---
+      { juara: 'Juara 1', kategori: 'MTQ Putri', event: 'MUFI UIN Maulana Malik Ibrahim Malang', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'MTQ Putra', event: 'MUFI UIN Maulana Malik Ibrahim Malang', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 3 & Favorit', kategori: 'Cover Sholawat', event: 'MUFI UIN Maulana Malik Ibrahim Malang', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'MUFI UIN Maulana Malik Ibrahim Malang', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Harapan 1', kategori: 'Hadrah El-Hiqma', event: 'MUFI UIN Sunan Kalijaga Yogyakarta', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'Pekan Tilawatil Qur\'an ke-52', event: 'RRI Jakarta', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Harapan 2', kategori: 'MTQ Putri', event: 'GESIDAR II', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'MSQ Putri', event: 'GESIDAR II', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Harapan 2', kategori: 'Marawis El-Hiqma', event: 'Festival Religi DISPAREKRAF Jakarta Selatan', tahun: 2022, tingkat: 'Jabodetabek' },
+      { juara: 'Juara 2', kategori: 'MTQ Qira\'at Murattal Remaja Putra', event: 'MTQ NTB', tahun: 2022, tingkat: 'Provinsi' },
+      { juara: 'Juara 3', kategori: 'MTQ Qira\'at Murattal Remaja Putri', event: 'MTQ NTB', tahun: 2022, tingkat: 'Provinsi' },
+      { juara: 'Juara 1', kategori: 'MTQ Putra', event: 'PESONA I PTKIN UIN Sunan Gunung Djati Bandung', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'MTQ Putri', event: 'PESONA I PTKIN UIN Sunan Gunung Djati Bandung', tahun: 2022, tingkat: 'Nasional' },
+      { juara: 'Juara 1', kategori: 'STQ Cabang Tilawah Dewasa Putri', event: 'Kota Jakarta Utara', tahun: 2022, tingkat: 'Kota' },
+      { juara: 'Juara 1', kategori: 'MTQ Cabang Tilawah Remaja Putra', event: 'Kota Bontang', tahun: 2022, tingkat: 'Kota' },
+
+      // --- 2023 ---
+      { juara: 'Juara 2', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'Family Law Festival (Online)', tahun: 2023, tingkat: 'Umum' },
+      { juara: 'Best Jingle', kategori: 'Hadrah El-HIQMA', event: 'Festival Shalawat Banjari JMQ – Ma\'had PTIQ Jakarta', tahun: 2023, tingkat: 'Umum' },
+      { juara: 'Best Sari Tilawah', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'MUFI UIN Malang', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'MUFI UIN Malang', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'MSQ Putri', event: 'GESIDAR III (Online)', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'MHQ 5 Juz', event: 'ARIF – Teater FDIKOM UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 1', kategori: 'MHQ 5 Juz', event: 'ARIF – Teater FDIKOM UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 1', kategori: 'Da\'i/Da\'iyah', event: 'ARIF – Teater FDIKOM UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 3', kategori: 'Da\'i/Da\'iyah', event: 'ARIF – Teater FDIKOM UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Harapan 2', kategori: 'Marawis El-HIQMA', event: 'Festival Marawis 1444 H di Metro', tahun: 2023, tingkat: 'Umum' },
+      { juara: 'Harapan 1', kategori: 'MHQ 10 Juz', event: 'IAT Festival – Fakultas Ushuluddin UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 1', kategori: 'MHQ 5 Juz', event: 'IAT Festival – Fakultas Ushuluddin UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 3', kategori: 'MHQ 5 Juz', event: 'IAT Festival – Fakultas Ushuluddin UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 2', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'IAT Festival – Fakultas Ushuluddin UIN Jakarta', tahun: 2023, tingkat: 'Mahasiswa' },
+      { juara: 'Harapan 2', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'ICU UKKI Universitas Negeri Surabaya (Online)', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 2', kategori: 'Hadrah El-HIQMA', event: 'Festival Hadrah Universitas Satya Negara Indonesia', tahun: 2023, tingkat: 'Jabodetabek' },
+      { juara: 'Juara 1', kategori: 'Da\'i', event: 'National Competition Islamic Festival Universitas Brawijaya (Online)', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'Da\'i', event: 'Al-Musabaqat UIN Sunan Ampel Surabaya', tahun: 2023, tingkat: 'Nasional' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'PORSI JAWARA PTKIN UIN KHAS Jember', tahun: 2023, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 1', kategori: 'Da\'i', event: 'PORSI JAWARA PTKIN UIN KHAS Jember', tahun: 2023, tingkat: 'Jawa-Madura' },
+      { juara: 'Juara 3', kategori: 'Da\'i', event: 'ICU UKKI Universitas Negeri Surabaya (Online)', tahun: 2023, tingkat: 'Nasional' },
+
+      // --- 2024 ---
+      { juara: 'Juara 1', kategori: 'Da\'i/Da\'iyah', event: 'Ayasofya Gebyar Ramadhan – Ayasofya Center Indonesia', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 2', kategori: 'Da\'i/Da\'iyah', event: 'Ayasofya Gebyar Ramadhan – Ayasofya Center Indonesia', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 3', kategori: 'Da\'i/Da\'iyah', event: 'Ayasofya Gebyar Ramadhan – Ayasofya Center Indonesia', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 1', kategori: 'Musabaqah Hifzil Qur\'an (MHQ)', event: 'Ayasofya Gebyar Ramadhan – Teater FDIKOM', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Hifzil Qur\'an (MHQ)', event: 'Ayasofya Gebyar Ramadhan – Teater FDIKOM', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 1', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'Ramadhan Lecture Movement FSH', tahun: 2024, tingkat: 'Mahasiswa' },
+      { juara: 'Harapan 1', kategori: 'Musabaqah Tilawatil Qur\'an (MTQ)', event: 'Milad JQH Al Mizan UIN Suka', tahun: 2024, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 3', kategori: 'Da\'i/Da\'iyah', event: 'PTQ RRI Bogor', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 3', kategori: 'Da\'i/Da\'iyah', event: 'PTQ RRI Banten', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Harapan 2', kategori: 'Da\'i/Da\'iyah', event: 'PTQ RRI Jakarta (Online)', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 1', kategori: 'Da\'i/Da\'iyah', event: 'GESIDAR (Online)', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Harapan 3', kategori: 'MSQ Tim 1', event: 'GESIDAR (Online)', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Harapan 1', kategori: 'Da\'i/Da\'iyah', event: 'GESIDAR (Online)', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Terbaik 7', kategori: 'MSQ Tim 2', event: 'GESIDAR (Online)', tahun: 2024, tingkat: 'Umum' },
+      { juara: 'Juara 3', kategori: 'Musabaqah Syarhil Qur\'an (MSQ)', event: 'Gebyar Sabilussalam', tahun: 2024, tingkat: 'Umum' },
+
+      // --- 2025 ---
+      { juara: 'Harapan 1', kategori: 'Musabaqah Syarhil Qur\'an', event: 'TPQ Nurul Huda (Online)', tahun: 2025, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 2', kategori: 'Musabaqah Syarhil Qur\'an', event: 'Festival Ramadhan Competition (Online)', tahun: 2025, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 1', kategori: 'Da\'i/Da\'iyah', event: 'Perlombaan UHAMKA', tahun: 2025, tingkat: 'Umum' },
+      { juara: 'Harapan 1', kategori: 'Lagu Islami', event: 'Perlombaan UHAMKA', tahun: 2025, tingkat: 'Umum' },
+      { juara: 'Juara 3', kategori: 'Da\'i/Da\'iyah', event: 'Ayasofya Gebyar Ramadhan – Masjid Al-Mughirah', tahun: 2025, tingkat: 'Umum' },
+      { juara: 'Juara 2', kategori: 'Poster Islami', event: 'Ayasofya Gebyar Ramadhan – Masjid Al-Mughirah', tahun: 2025, tingkat: 'Umum' },
+      { juara: 'Juara 2', kategori: 'Marawis', event: 'Festival Marawis – Mall Ciputra Cibubur', tahun: 2025, tingkat: 'Umum' },
+      { juara: 'Juara Favorit', kategori: 'Musabaqah Syarhil Qur\'an (MSQ) Tim', event: 'MUFI XI JDFI UIN Malang', tahun: 2025, tingkat: 'Mahasiswa' },
+      { juara: 'Juara Favorit', kategori: 'Kaligrafi', event: 'MUFI XI JDFI UIN Malang', tahun: 2025, tingkat: 'Mahasiswa' },
+      { juara: 'Juara 3', kategori: 'Sholawat', event: 'FAROBIY II (Online)', tahun: 2025, tingkat: 'Umum' },
+    ];
+
+    // Sort: newest first, Internasional first within same year
+    awards.sort((a, b) => {
+      if (b.tahun !== a.tahun) return b.tahun - a.tahun;
+      if (a.tingkat === 'Internasional') return -1;
+      if (b.tingkat === 'Internasional') return 1;
+      return 0;
+    });
+
+    // ==========================================
+    // RENDER LOGIC
+    // ==========================================
+    function getTrophyStyle(juara) {
+      const j = juara.toLowerCase();
+      if (j.includes('juara 1') || j.includes('terbaik 1')) return { cls: 'trophy-gold', icon: '🥇', text: 'text-yellow-800' };
+      if (j.includes('juara 2') || j.includes('terbaik 2')) return { cls: 'trophy-silver', icon: '🥈', text: 'text-gray-700' };
+      if (j.includes('juara 3') || j.includes('terbaik 3')) return { cls: 'trophy-bronze', icon: '🥉', text: 'text-amber-900' };
+      if (j.includes('harapan') || j.includes('terbaik')) return { cls: 'trophy-hope', icon: '🏅', text: 'text-blue-800' };
+      if (j.includes('favorit') || j.includes('best')) return { cls: 'trophy-fav', icon: '⭐', text: 'text-green-800' };
+      return { cls: 'trophy-hope', icon: '🏅', text: 'text-blue-800' };
+    }
+
+    function getLevelBadge(tingkat) {
+      const map = {
+        'Internasional': 'bg-purple-100 text-purple-700 border-purple-200',
+        'Nasional': 'bg-red-50 text-red-600 border-red-100',
+        'Jawa-Madura': 'bg-orange-50 text-orange-600 border-orange-100',
+        'Jabodetabek': 'bg-teal-50 text-teal-600 border-teal-100',
+        'Provinsi': 'bg-blue-50 text-blue-600 border-blue-100',
+        'Kota': 'bg-gray-100 text-gray-600 border-gray-200',
+        'Mahasiswa': 'bg-indigo-50 text-indigo-600 border-indigo-100',
+        'Umum': 'bg-green-50 text-green-700 border-green-100',
+      };
+      return map[tingkat] || 'bg-gray-100 text-gray-600 border-gray-200';
+    }
+
+    function renderCards(list) {
+      const grid = document.getElementById('awards-grid');
+      const countEl = document.getElementById('result-count');
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-3 text-center py-20 text-gray-400 font-medium">Tidak ada prestasi ditemukan untuk filter ini.</div>`;
+        countEl.textContent = '';
+        return;
+      }
+
+      countEl.textContent = `Menampilkan ${list.length} prestasi`;
+
+      // Group by year for section headers
+      const grouped = {};
+      list.forEach(a => {
+        if (!grouped[a.tahun]) grouped[a.tahun] = [];
+        grouped[a.tahun].push(a);
+      });
+
+      let html = '';
+      const sortedYears = Object.keys(grouped).sort((a, b) => b - a);
+
+      sortedYears.forEach(year => {
+        const isIntl = grouped[year].some(a => a.tingkat === 'Internasional');
+        const yearBg = isIntl ? 'intl-banner' : 'bg-hiqma-navy';
+
+        html += `
+          <div class="col-span-1 md:col-span-2 lg:col-span-3 year-tag" id="year-${year}">
+            <div class="flex items-center gap-4 py-2">
+              <div class="${yearBg} text-white font-extrabold text-lg px-6 py-2 rounded-xl shadow-sm">
+                ${year}
+                ${isIntl ? '<span class="ml-2 text-hiqma-gold text-xs font-bold">★ INTERNASIONAL</span>' : ''}
+              </div>
+              <div class="flex-1 h-px bg-gray-200"></div>
+              <span class="text-xs text-gray-400 font-medium">${grouped[year].length} prestasi</span>
+            </div>
+          </div>
+        `;
+
+        grouped[year].forEach((a, index) => {
+          const { cls, icon, text } = getTrophyStyle(a.juara);
+          const levelCls = getLevelBadge(a.tingkat);
+          const delayClass = 'reveal-delay-' + ((index % 3) + 1);
+
+          html += `
+            <div class="award-card bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col reveal-hidden ${delayClass}" data-tingkat="${a.tingkat}">
+              <!-- Trophy Header -->
+              <div class="${cls} px-5 py-4 flex items-center gap-3">
+                <span class="text-3xl" role="img" aria-label="trophy">${icon}</span>
+                <div>
+                  <div class="${text} font-extrabold text-sm leading-tight">${a.juara}</div>
+                  <div class="${text} opacity-70 text-xs font-semibold">${a.kategori}</div>
+                </div>
+              </div>
+              <!-- Card Body -->
+              <div class="p-5 flex-grow flex flex-col justify-between gap-3">
+                <p class="text-hiqma-navy font-semibold text-sm leading-snug">${a.event}</p>
+                <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
+                  <span class="text-xs font-bold text-gray-400">${a.tahun}</span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${levelCls}">${a.tingkat}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+
+      grid.innerHTML = html;
+      
+      // Re-observe newly rendered card items
+      if (window.revealObserver) {
+        const newReveals = grid.querySelectorAll('.reveal-hidden');
+        newReveals.forEach(el => window.revealObserver.observe(el));
+      }
+    }
+
+    // Initial render
+    renderCards(awards);
+
+    // ==========================================
+    // FILTER LOGIC
+    // ==========================================
+    let currentFilter = 'semua';
+
+    function filterAwards(tingkat) {
+      currentFilter = tingkat;
+
+      // Update button states
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`filter-${tingkat}`).classList.add('active');
+
+      const filtered = tingkat === 'semua' ? awards : awards.filter(a => a.tingkat === tingkat);
+      renderCards(filtered);
+    }
+
+    // Scroll Reveal Animation using Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal-hidden');
+    window.revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    revealElements.forEach(el => window.revealObserver.observe(el));
+  </script>
+</body>
+</html>

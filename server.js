@@ -9,6 +9,7 @@ const db = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const publikasiRoutes = require('./routes/publikasiRoutes');
 const galeriRoutes = require('./routes/galeriRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -32,6 +33,10 @@ app.get('/profil', (req, res) => {
 
 app.get('/publikasi', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'publikasi.html'));
+});
+
+app.get('/prestasi', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'prestasi.html'));
 });
 
 app.get('/publikasi/detail/:id', (req, res) => {
@@ -67,6 +72,7 @@ app.get('/admin/dashboard', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/publikasi', publikasiRoutes);
 app.use('/api/galeri', galeriRoutes);
+app.use('/api/booking', bookingRoutes);
 
 // Base API Route
 app.get('/api', (req, res) => {
